@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Healthy Feast: A complete 30-day healthy, high-protein Indian meal plan with Kannada instructions.">
-    <title>Healthy Feast | 30-Day Healthy Meal Plan</title>
+    <meta name="description" content="Healthy Feast: A complete monthly healthy Indian meal plan with Kannada instructions.">
+    <title>Healthy Feast | Monthly Healthy Meal Plan</title>
     
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,38 +54,38 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased">
 
     <!-- Sticky Header -->
-    <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm px-4 py-2 md:py-3 flex flex-col items-center justify-center">
-        <div class="text-xl font-bold text-emerald-600 flex items-center gap-2">🥗 Healthy Feast</div>
-        <div class="text-xs md:text-sm text-slate-500 dark:text-slate-400">Healthy Bengaluru Meal Plan</div>
+    <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm px-4 py-2 flex flex-col items-center justify-center">
+        <div class="text-lg font-bold text-emerald-600 flex items-center gap-2">🥗 Healthy Feast</div>
+        <div class="text-xs text-slate-500 dark:text-slate-400">Healthy Bengaluru Meal Plan</div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-3 md:px-4 py-4 md:py-8">
+    <main class="max-w-5xl mx-auto px-3 py-4 md:py-6">
         
-        <!-- Hero Section -->
-        <div class="text-center p-6 md:p-8 bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-2xl shadow-lg mb-6 relative overflow-hidden">
+        <!-- Compact Hero Section -->
+        <div class="text-center p-5 md:p-8 bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-xl shadow-md mb-6 relative overflow-hidden">
             <!-- Decorative background circles -->
-            <div class="absolute top-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-            <div class="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 bg-white/10 rounded-full translate-x-1/4 translate-y-1/4"></div>
+            <div class="absolute top-0 left-0 w-24 h-24 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-32 h-32 bg-white/10 rounded-full translate-x-1/4 translate-y-1/4"></div>
             
             <div class="relative z-10">
-                <h1 class="text-2xl md:text-3xl font-extrabold mb-2 drop-shadow-md">30-Day Healthy Meal Plan</h1>
-                <h2 class="text-lg md:text-xl font-medium text-emerald-100 mb-3 drop-shadow">Healthy Feast: 30 ದಿನಗಳ ಊಟದ ಯೋಜನೆ</h2>
+                <h1 class="text-2xl md:text-3xl font-extrabold mb-1 drop-shadow-md" id="main-title">Monthly Healthy Meal Plan</h1>
+                <h2 class="text-lg md:text-xl font-medium text-emerald-100 mb-2 drop-shadow" id="main-subtitle">Healthy Feast: ಮಾಸಿಕ ಊಟದ ಯೋಜನೆ</h2>
                 <p class="text-emerald-50 text-sm md:text-base max-w-2xl mx-auto">High Protein • High Fiber • Local Flavors • Dual Language</p>
-                <div class="mt-4 inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xs md:text-sm font-medium border border-white/30 shadow-inner" id="current-day-banner">
+                <div class="mt-4 inline-block bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs md:text-sm font-medium border border-white/30 shadow-inner" id="current-day-banner">
                     Loading today's plan...
                 </div>
             </div>
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="flex overflow-x-auto gap-2 md:gap-3 mb-6 md:mb-8 pb-2 no-scrollbar border-b border-slate-200 dark:border-slate-700" id="tabs-container">
-            <button class="tab-btn active px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-emerald-600 text-white" data-target="meal-plan">
+        <div class="flex overflow-x-auto gap-2 mb-6 pb-2 no-scrollbar border-b border-slate-200 dark:border-slate-700" id="tabs-container">
+            <button class="tab-btn active px-4 py-2 text-sm md:text-base rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-emerald-600 text-white" data-target="meal-plan">
                 📅 Meal Plan (ಊಟದ ಯೋಜನೆ)
             </button>
-            <button class="tab-btn px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 border-b-0" data-target="groceries">
+            <button class="tab-btn px-4 py-2 text-sm md:text-base rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 border-b-0" data-target="groceries">
                 🛒 Groceries & Prep (ದಿನಸಿ)
             </button>
-            <button class="tab-btn px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 border-b-0" data-target="guidelines">
+            <button class="tab-btn px-4 py-2 text-sm md:text-base rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 border-b-0" data-target="guidelines">
                 🚶‍♂️ Guidelines (ಮಾರ್ಗಸೂಚಿಗಳು)
             </button>
         </div>
@@ -94,14 +94,15 @@
         
         <!-- MEAL PLAN SECTION -->
         <div id="meal-plan" class="section-content block animate-[fadeIn_0.3s_ease-in-out]">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
-                <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">Select Day (ದಿನವನ್ನು ಆಯ್ಕೆಮಾಡಿ)</h3>
-                <p class="text-sm text-emerald-600 dark:text-emerald-400 font-medium bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-md">
-                    <em>Note: Every Monday (Days 1, 8, 15, 22, 29) is Pure Veg! (ಪ್ರತಿ ಸೋಮವಾರ ಸಸ್ಯಾಹಾರಿ)</em>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-3 gap-2">
+                <h3 class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100" id="calendar-header">Select Day (ದಿನವನ್ನು ಆಯ್ಕೆಮಾಡಿ)</h3>
+                <p class="text-xs md:text-sm text-emerald-600 dark:text-emerald-400 font-medium bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-md">
+                    <em>Note: Every real-world Monday is Pure Veg! (ಪ್ರತಿ ಸೋಮವಾರ ಸಸ್ಯಾಹಾರಿ)</em>
                 </p>
             </div>
             
-            <div class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-10 gap-2 mb-8" id="calendar-grid">
+            <!-- Calendar Grid -->
+            <div class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-10 gap-1.5 md:gap-2 mb-6" id="calendar-grid">
                 <!-- JS Populated -->
             </div>
             
@@ -111,93 +112,93 @@
         </div>
 
         <!-- GROCERIES SECTION -->
-        <div id="groceries" class="section-content hidden animate-[fadeIn_0.3s_ease-in-out] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8">
-            <h2 class="text-2xl font-bold text-emerald-600 mb-2 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2">🛒 Weekly Groceries (ವಾರದ ದಿನಸಿ)</h2>
-            <p class="text-slate-600 dark:text-slate-300 mb-1">Stock up on these essentials available in local Bengaluru markets.</p>
-            <p class="text-kannada-light dark:text-kannada-dark text-sm mb-6 font-medium">ಸ್ಥಳೀಯ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಸಿಗುವ ಈ ಅಗತ್ಯ ವಸ್ತುಗಳನ್ನು ತಂದುಟ್ಟುಕೊಳ್ಳಿ.</p>
+        <div id="groceries" class="section-content hidden animate-[fadeIn_0.3s_ease-in-out] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 md:p-6">
+            <h2 class="text-xl md:text-2xl font-bold text-emerald-600 mb-2 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2">🛒 Weekly Groceries (ವಾರದ ದಿನಸಿ)</h2>
+            <p class="text-sm md:text-base text-slate-600 dark:text-slate-300 mb-1">Stock up on these essentials available in local Bengaluru markets.</p>
+            <p class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mb-5 font-medium">ಸ್ಥಳೀಯ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಸಿಗುವ ಈ ಅಗತ್ಯ ವಸ್ತುಗಳನ್ನು ತಂದುಟ್ಟುಕೊಳ್ಳಿ.</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                    <h3 class="text-lg font-bold mb-3 flex items-center gap-2"><span class="text-xl">🌾</span> Grains & Millets (ಸಿರಿಧಾನ್ಯಗಳು)</h3>
-                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-2">
-                        <li>Ragi Flour <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ರಾಗಿ ಹಿಟ್ಟು</span></li>
-                        <li>Foxtail & Little Millets <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ನವಣೆ, ಸಾಮೆ</span></li>
-                        <li>Jowar Flour & Broken Wheat <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಜೋಳದ ಹಿಟ್ಟು, ದಲಿಯಾ</span></li>
-                        <li>Brown Rice & Rolled Oats <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಕೆಂಪಕ್ಕಿ, ಓಟ್ಸ್</span></li>
+                    <h3 class="text-base md:text-lg font-bold mb-2 flex items-center gap-2"><span>🌾</span> Grains & Millets (ಸಿರಿಧಾನ್ಯಗಳು)</h3>
+                    <ul class="list-disc list-inside space-y-1.5 text-sm md:text-base text-slate-700 dark:text-slate-300 ml-1 md:ml-2">
+                        <li>Ragi Flour <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ರಾಗಿ ಹಿಟ್ಟು</span></li>
+                        <li>Foxtail & Little Millets <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ನವಣೆ, ಸಾಮೆ</span></li>
+                        <li>Jowar Flour & Broken Wheat <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಜೋಳದ ಹಿಟ್ಟು, ದಲಿಯಾ</span></li>
+                        <li>Brown Rice & Rolled Oats <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಕೆಂಪಕ್ಕಿ, ಓಟ್ಸ್</span></li>
                     </ul>
                     
-                    <h3 class="text-lg font-bold mt-6 mb-3 flex items-center gap-2"><span class="text-xl">🥦</span> Vegetables (ತರಕಾರಿಗಳು)</h3>
-                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-2">
-                        <li>Palak, Methi <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಪಾಲಕ್, ಮೆಂತ್ಯ ಸೊಪ್ಪು</span></li>
-                        <li>Bottle gourd, Bitter gourd <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಸೋರೆಕಾಯಿ, ಹಾಗಲಕಾಯಿ</span></li>
-                        <li>Onions, Tomatoes, Garlic <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಈರುಳ್ಳಿ, ಟೊಮೆಟೊ, ಬೆಳ್ಳುಳ್ಳಿ</span></li>
+                    <h3 class="text-base md:text-lg font-bold mt-5 mb-2 flex items-center gap-2"><span>🥦</span> Vegetables (ತರಕಾರಿಗಳು)</h3>
+                    <ul class="list-disc list-inside space-y-1.5 text-sm md:text-base text-slate-700 dark:text-slate-300 ml-1 md:ml-2">
+                        <li>Palak, Methi <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಪಾಲಕ್, ಮೆಂತ್ಯ ಸೊಪ್ಪು</span></li>
+                        <li>Bottle gourd, Bitter gourd <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಸೋರೆಕಾಯಿ, ಹಾಗಲಕಾಯಿ</span></li>
+                        <li>Onions, Tomatoes, Garlic <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಈರುಳ್ಳಿ, ಟೊಮೆಟೊ, ಬೆಳ್ಳುಳ್ಳಿ</span></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-bold mb-3 flex items-center gap-2"><span class="text-xl">🥚</span> Proteins (ಪ್ರೋಟೀನ್)</h3>
-                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-2">
-                        <li>Toor Dal, Moong Dal, Chana <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ತೊಗರಿಬೇಳೆ, ಹೆಸರುಬೇಳೆ, ಕಡಲೆ</span></li>
-                        <li>Paneer (Low-fat) <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಪನೀರ್</span></li>
-                        <li>Eggs (Tray of 30) <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಮೊಟ್ಟೆ</span></li>
-                        <li>Chicken Breast <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಚಿಕನ್</span> <span class="text-xs text-slate-400">(Optional)</span></li>
+                    <h3 class="text-base md:text-lg font-bold mb-2 flex items-center gap-2"><span>🥚</span> Proteins (ಪ್ರೋಟೀನ್)</h3>
+                    <ul class="list-disc list-inside space-y-1.5 text-sm md:text-base text-slate-700 dark:text-slate-300 ml-1 md:ml-2">
+                        <li>Toor Dal, Moong Dal, Chana <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ತೊಗರಿಬೇಳೆ, ಹೆಸರುಬೇಳೆ, ಕಡಲೆ</span></li>
+                        <li>Paneer (Low-fat) <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಪನೀರ್</span></li>
+                        <li>Eggs (Tray of 30) <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಮೊಟ್ಟೆ</span></li>
+                        <li>Chicken Breast <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಚಿಕನ್</span> <span class="text-[10px] md:text-xs text-slate-400">(Optional)</span></li>
                     </ul>
                     
-                    <h3 class="text-lg font-bold mt-6 mb-3 flex items-center gap-2"><span class="text-xl">🥜</span> Seeds & Dairy (ಬೀಜಗಳು ಮತ್ತು ಹೈನುಗಾರಿಕೆ)</h3>
-                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-2">
-                        <li>Almonds, Walnuts <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಬಾದಾಮಿ, ವಾಲ್ನಟ್</span></li>
-                        <li>Chia, Pumpkin seeds <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಚಿಯಾ ಬೀಜ, ಕುಂಬಳಕಾಯಿ ಬೀಜ</span></li>
-                        <li>Curd, Buttermilk <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಮೊಸರು, ಮಜ್ಜಿಗೆ</span></li>
+                    <h3 class="text-base md:text-lg font-bold mt-5 mb-2 flex items-center gap-2"><span>🥜</span> Seeds & Dairy (ಬೀಜಗಳು ಮತ್ತು ಹೈನುಗಾರಿಕೆ)</h3>
+                    <ul class="list-disc list-inside space-y-1.5 text-sm md:text-base text-slate-700 dark:text-slate-300 ml-1 md:ml-2">
+                        <li>Almonds, Walnuts <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಬಾದಾಮಿ, ವಾಲ್ನಟ್</span></li>
+                        <li>Chia, Pumpkin seeds <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಚಿಯಾ ಬೀಜ, ಕುಂಬಳಕಾಯಿ ಬೀಜ</span></li>
+                        <li>Curd, Buttermilk <span class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm ml-1">/ ಮೊಸರು, ಮಜ್ಜಿಗೆ</span></li>
                     </ul>
                 </div>
             </div>
 
-            <h2 class="text-2xl font-bold text-emerald-600 mb-4 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2 mt-8">🔪 Sunday Prep (ಭಾನುವಾರದ ತಯಾರಿ)</h2>
-            <ul class="space-y-4 text-slate-700 dark:text-slate-300">
-                <li class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-lg border border-slate-100 dark:border-slate-700">
+            <h2 class="text-xl md:text-2xl font-bold text-emerald-600 mb-3 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2 mt-6">🔪 Sunday Prep (ಭಾನುವಾರದ ತಯಾರಿ)</h2>
+            <ul class="space-y-3 text-sm md:text-base text-slate-700 dark:text-slate-300">
+                <li class="bg-slate-50 dark:bg-slate-700/30 p-3 md:p-4 rounded-lg border border-slate-100 dark:border-slate-700">
                     <strong>Batter Prep:</strong> Grind and ferment Ragi/Oats Dosa batters.
-                    <div class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಹಿಟ್ಟಿನ ತಯಾರಿ: ರಾಗಿ ಅಥವಾ ಓಟ್ಸ್ ದೋಸೆ ಹಿಟ್ಟನ್ನು ರುಬ್ಬಿ ಹುದುಗಲು ಇಡಿ.</div>
+                    <div class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mt-1 font-medium">ಹಿಟ್ಟಿನ ತಯಾರಿ: ರಾಗಿ ಅಥವಾ ಓಟ್ಸ್ ದೋಸೆ ಹಿಟ್ಟನ್ನು ರುಬ್ಬಿ ಹುದುಗಲು ಇಡಿ.</div>
                 </li>
-                <li class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-lg border border-slate-100 dark:border-slate-700">
+                <li class="bg-slate-50 dark:bg-slate-700/30 p-3 md:p-4 rounded-lg border border-slate-100 dark:border-slate-700">
                     <strong>Sprouting:</strong> Soak green moong to have fresh sprouts for the week.
-                    <div class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಮೊಳಕೆ ಬರಿಸುವುದು: ವಾರದ ಸಲಾಡ್‌ಗಳಿಗಾಗಿ ಹೆಸರುಕಾಳನ್ನು ನೆನೆಸಿ ಮೊಳಕೆ ಬರಿಸಿ.</div>
+                    <div class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mt-1 font-medium">ಮೊಳಕೆ ಬರಿಸುವುದು: ವಾರದ ಸಲಾಡ್‌ಗಳಿಗಾಗಿ ಹೆಸರುಕಾಳನ್ನು ನೆನೆಸಿ ಮೊಳಕೆ ಬರಿಸಿ.</div>
                 </li>
-                <li class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-lg border border-slate-100 dark:border-slate-700">
+                <li class="bg-slate-50 dark:bg-slate-700/30 p-3 md:p-4 rounded-lg border border-slate-100 dark:border-slate-700">
                     <strong>Pastes:</strong> Make ginger-garlic paste to cut cooking time.
-                    <div class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಶುಂಠಿ-ಬೆಳ್ಳುಳ್ಳಿ ಪೇಸ್ಟ್ ಮಾಡಿ ಫ್ರಿಡ್ಜ್‌ನಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಿ.</div>
+                    <div class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mt-1 font-medium">ಶುಂಠಿ-ಬೆಳ್ಳುಳ್ಳಿ ಪೇಸ್ಟ್ ಮಾಡಿ ಫ್ರಿಡ್ಜ್‌ನಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಿ.</div>
                 </li>
             </ul>
         </div>
 
         <!-- GUIDELINES SECTION -->
-        <div id="guidelines" class="section-content hidden animate-[fadeIn_0.3s_ease-in-out] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8">
-            <h2 class="text-2xl font-bold text-emerald-600 mb-6 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2">🚶‍♂️ Lifestyle Guidelines (ಜೀವನಶೈಲಿ ಮಾರ್ಗಸೂಚಿಗಳು)</h2>
+        <div id="guidelines" class="section-content hidden animate-[fadeIn_0.3s_ease-in-out] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 md:p-6">
+            <h2 class="text-xl md:text-2xl font-bold text-emerald-600 mb-5 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2">🚶‍♂️ Lifestyle Guidelines (ಜೀವನಶೈಲಿ ಮಾರ್ಗಸೂಚಿಗಳು)</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div class="space-y-6">
                     <div>
-                        <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><span class="text-2xl">💧</span> Hydration (ನೀರು ಕುಡಿಯುವುದು)</h3>
-                        <p class="text-slate-700 dark:text-slate-300">Drink at least 2.5 to 3 Liters of water daily. Avoid sugary juices.</p>
-                        <p class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ದಿನಕ್ಕೆ ಕನಿಷ್ಠ 2.5 ರಿಂದ 3 ಲೀಟರ್ ನೀರು ಕುಡಿಯಿರಿ. ಸಕ್ಕರೆ ಹಾಕಿದ ಜ್ಯೂಸ್ ಬೇಡ. ಮಜ್ಜಿಗೆ ಮತ್ತು ಜೀರಿಗೆ ನೀರು ಉತ್ತಮ.</p>
+                        <h3 class="text-base md:text-lg font-bold mb-1.5 flex items-center gap-2"><span class="text-xl">💧</span> Hydration (ನೀರು ಕುಡಿಯುವುದು)</h3>
+                        <p class="text-sm md:text-base text-slate-700 dark:text-slate-300">Drink at least 2.5 to 3 Liters of water daily. Avoid sugary juices.</p>
+                        <p class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mt-1 font-medium">ದಿನಕ್ಕೆ ಕನಿಷ್ಠ 2.5 ರಿಂದ 3 ಲೀಟರ್ ನೀರು ಕುಡಿಯಿರಿ. ಸಕ್ಕರೆ ಹಾಕಿದ ಜ್ಯೂಸ್ ಬೇಡ. ಮಜ್ಜಿಗೆ ಮತ್ತು ಜೀರಿಗೆ ನೀರು ಉತ್ತಮ.</p>
                     </div>
                     
                     <div>
-                        <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><span class="text-2xl">🏃</span> Exercise (ವ್ಯಾಯಾಮ)</h3>
-                        <p class="text-slate-700 dark:text-slate-300"><strong>10-Minute Walk:</strong> Walk for 10-15 minutes immediately after Lunch and Dinner. This blunts the blood sugar spike.</p>
-                        <p class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಊಟ ಮತ್ತು ರಾತ್ರಿಯ ಊಟದ ನಂತರ ತಕ್ಷಣ 10-15 ನಿಮಿಷಗಳ ಕಾಲ ನಡೆಯಿರಿ. ಇದು ಮಧುಮೇಹ ನಿಯಂತ್ರಣಕ್ಕೆ ಬಹಳ ಮುಖ್ಯ.</p>
+                        <h3 class="text-base md:text-lg font-bold mb-1.5 flex items-center gap-2"><span class="text-xl">🏃</span> Exercise (ವ್ಯಾಯಾಮ)</h3>
+                        <p class="text-sm md:text-base text-slate-700 dark:text-slate-300"><strong>10-Minute Walk:</strong> Walk for 10-15 minutes immediately after Lunch and Dinner. This blunts the blood sugar spike.</p>
+                        <p class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mt-1 font-medium">ಊಟ ಮತ್ತು ರಾತ್ರಿಯ ಊಟದ ನಂತರ ತಕ್ಷಣ 10-15 ನಿಮಿಷಗಳ ಕಾಲ ನಡೆಯಿರಿ. ಇದು ಮಧುಮೇಹ ನಿಯಂತ್ರಣಕ್ಕೆ ಬಹಳ ಮುಖ್ಯ.</p>
                     </div>
                 </div>
                 
-                <div class="space-y-8">
+                <div class="space-y-6">
                     <div>
-                        <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><span class="text-2xl">🍽️</span> Portion Control (ಊಟದ ಪ್ರಮಾಣ)</h3>
-                        <p class="text-slate-700 dark:text-slate-300">Use the "Healthy Plate Method": ½ vegetables, ¼ protein, ¼ complex carbs.</p>
-                        <p class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ನಿಮ್ಮ ತಟ್ಟೆಯಲ್ಲಿ: ಅರ್ಧ ಭಾಗ ತರಕಾರಿ ಪಲ್ಯ/ಸಲಾಡ್, ಕಾಲು ಭಾಗ ಪ್ರೋಟೀನ್ (ಬೇಳೆ/ಮೊಟ್ಟೆ), ಕಾಲು ಭಾಗ ಅನ್ನ ಅಥವಾ ರೊಟ್ಟಿ ಇರಬೇಕು.</p>
+                        <h3 class="text-base md:text-lg font-bold mb-1.5 flex items-center gap-2"><span class="text-xl">🍽️</span> Portion Control (ಊಟದ ಪ್ರಮಾಣ)</h3>
+                        <p class="text-sm md:text-base text-slate-700 dark:text-slate-300">Use the "Healthy Plate Method": ½ vegetables, ¼ protein, ¼ complex carbs.</p>
+                        <p class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mt-1 font-medium">ನಿಮ್ಮ ತಟ್ಟೆಯಲ್ಲಿ: ಅರ್ಧ ಭಾಗ ತರಕಾರಿ ಪಲ್ಯ/ಸಲಾಡ್, ಕಾಲು ಭಾಗ ಪ್ರೋಟೀನ್ (ಬೇಳೆ/ಮೊಟ್ಟೆ), ಕಾಲು ಭಾಗ ಅನ್ನ ಅಥವಾ ರೊಟ್ಟಿ ಇರಬೇಕು.</p>
                     </div>
 
                     <div>
-                        <h3 class="text-lg font-bold mb-2 flex items-center gap-2 text-red-500"><span class="text-2xl">🚫</span> Avoid (ತಿನ್ನಬಾರದ ಆಹಾರಗಳು)</h3>
-                        <p class="text-slate-700 dark:text-slate-300">Maida, white sugar, jaggery, bakery items, deep-fried snacks.</p>
-                        <p class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಮೈದಾ, ಬಿಳಿ ಸಕ್ಕರೆ, ಬೆಲ್ಲ, ಬೇಕರಿ ತಿನಿಸುಗಳು ಮತ್ತು ಎಣ್ಣೆಯಲ್ಲಿ ಕರಿದ ಪದಾರ್ಥಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಬಿಡಿ.</p>
+                        <h3 class="text-base md:text-lg font-bold mb-1.5 flex items-center gap-2 text-red-500"><span class="text-xl">🚫</span> Avoid (ತಿನ್ನಬಾರದ ಆಹಾರಗಳು)</h3>
+                        <p class="text-sm md:text-base text-slate-700 dark:text-slate-300">Maida, white sugar, jaggery, bakery items, deep-fried snacks.</p>
+                        <p class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mt-1 font-medium">ಮೈದಾ, ಬಿಳಿ ಸಕ್ಕರೆ, ಬೆಲ್ಲ, ಬೇಕರಿ ತಿನಿಸುಗಳು ಮತ್ತು ಎಣ್ಣೆಯಲ್ಲಿ ಕರಿದ ಪದಾರ್ಥಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಬಿಡಿ.</p>
                     </div>
                 </div>
             </div>
@@ -206,14 +207,14 @@
     </main>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all transform scale-0 opacity-0 z-50">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-emerald-600 hover:bg-emerald-700 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg transition-all transform scale-0 opacity-0 z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
 
     <script>
-        // --- DATA WITH KANNADA TRANSLATIONS & VEG FLAGS (English Numerals Only) ---
+        // --- RECIPE DATA POOLS ---
         
         const breakfastPool = [
             {
@@ -303,7 +304,7 @@
                 name: "Foxtail Millet Bisi Bele Bath", nameKn: "ನವಣೆ ಬಿಸಿ ಬೇಳೆ ಭಾತ್",
                 desc: "Spicy one-pot meal made with millets, lentils, and veggies.",
                 descKn: "ನವಣೆ, ಬೇಳೆ ಮತ್ತು ತರಕಾರಿಗಳಿಂದ ಮಾಡಿದ ಮಸಾಲೆಯುಕ್ತ ಭಾತ್.",
-                health: "Foxtail millet is very healthy. Balanced complete meal.",
+                health: "Foxtail millet is a healthy grain alternative. Balanced complete meal.",
                 prep: "15m", cook: "25m", serves: 2, isVeg: true,
                 ingredients: ["0.5 cup Foxtail Millet / ನವಣೆ", "0.5 cup Toor Dal / ತೊಗರಿಬೇಳೆ", "Mixed veg / ತರಕಾರಿಗಳು", "BBB powder / ಬಿಸಿ ಬೇಳೆ ಭಾತ್ ಪುಡಿ", "Tamarind / ಹುಣಸೆಹಣ್ಣು"],
                 instructions: [
@@ -469,25 +470,47 @@
         const vegLunches = lunchPool.filter(l => l.isVeg);
         const vegDinners = dinnerPool.filter(d => d.isVeg);
 
-        // Generate 30 days array
+        // --- REAL-TIME CALENDAR CALCULATION LOGIC ---
+        
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonth = today.getMonth(); // 0-11
+        const currentDate = today.getDate();
+        
+        // Find how many days are in the current month (e.g. Feb=28/29, June=30, July=31)
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        
+        // Get month name for dynamic header
+        const monthName = today.toLocaleString('default', { month: 'long' });
+
+        // Standard Weekdays Array (0 = Sunday, 1 = Monday...)
+        const daysEn = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const daysKn = ["ಭಾನುವಾರ", "ಸೋಮವಾರ", "ಮಂಗಳವಾರ", "ಬುಧವಾರ", "ಗುರುವಾರ", "ಶುಕ್ರವಾರ", "ಶನಿವಾರ"];
+
+        // Dynamic days data array based on the real month
         const daysData = [];
-        for(let day=1; day<=30; day++) {
-            // Check if it's Monday (Day 1, 8, 15, 22, 29)
-            let isMonday = (day % 7 === 1); 
+        for(let day = 1; day <= daysInMonth; day++) {
+            
+            // Determine actual weekday (0-6)
+            let dateObj = new Date(currentYear, currentMonth, day);
+            let realDayIndex = dateObj.getDay(); 
+            
+            let isMonday = (realDayIndex === 1); 
             
             let b, l, d;
             if (isMonday) {
-                b = vegBreakfasts[(day) % vegBreakfasts.length];
-                l = vegLunches[(day) % vegLunches.length];
-                d = vegDinners[(day) % vegDinners.length];
+                b = vegBreakfasts[day % vegBreakfasts.length];
+                l = vegLunches[day % vegLunches.length];
+                d = vegDinners[day % vegDinners.length];
             } else {
-                b = breakfastPool[(day) % breakfastPool.length];
-                l = lunchPool[(day) % lunchPool.length];
-                d = dinnerPool[(day) % dinnerPool.length];
+                b = breakfastPool[day % breakfastPool.length];
+                l = lunchPool[day % lunchPool.length];
+                d = dinnerPool[day % dinnerPool.length];
             }
 
             daysData.push({
                 dayNum: day,
+                realDayIndex: realDayIndex,
                 isMonday: isMonday,
                 breakfast: b,
                 lunch: l,
@@ -496,15 +519,16 @@
         }
 
         // --- UI LOGIC ---
-        
-        let currentDate = new Date().getDate();
-        if(currentDate > 30) currentDate = 30; // Map 31st to Day 30
 
         function init() {
+            // Update Headers with real month name
+            document.getElementById('main-title').innerText = `${monthName} Healthy Meal Plan`;
+            document.getElementById('calendar-header').innerText = `Select Day in ${monthName} (ದಿನವನ್ನು ಆಯ್ಕೆಮಾಡಿ)`;
+
             setupTabs();
             renderCalendar();
             renderDayView(currentDate);
-            document.getElementById('current-day-banner').innerText = `Displaying plan for Day ${currentDate} of 30`;
+            document.getElementById('current-day-banner').innerText = `Displaying plan for ${monthName} ${currentDate}`;
             
             // Scroll to top button logic
             const backToTopBtn = document.getElementById('backToTop');
@@ -548,41 +572,34 @@
             });
         }
 
-        function getDayName(dayNum) {
-            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            return days[(dayNum) % 7];
-        }
-        function getDayNameKn(dayNum) {
-            const daysKn = ["ಭಾನುವಾರ", "ಸೋಮವಾರ", "ಮಂಗಳವಾರ", "ಬುಧವಾರ", "ಗುರುವಾರ", "ಶುಕ್ರವಾರ", "ಶನಿವಾರ"];
-            return daysKn[(dayNum) % 7];
-        }
-
         function renderCalendar() {
             const grid = document.getElementById('calendar-grid');
             grid.innerHTML = '';
-            for(let i=1; i<=30; i++) {
+            
+            for(let i = 1; i <= daysInMonth; i++) {
                 const box = document.createElement('button');
+                const dataForDay = daysData[i-1];
+                const dayStrEN = daysEn[dataForDay.realDayIndex].substring(0,3);
                 
-                const baseClasses = "flex flex-col items-center justify-center py-2 px-1 md:p-2 rounded-xl border transition-all duration-200 font-bold focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-1 dark:focus:ring-offset-slate-900";
+                const baseClasses = "flex flex-col items-center justify-center p-1.5 md:p-2 rounded-xl border transition-all duration-200 font-bold focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-1 dark:focus:ring-offset-slate-900";
                 const inactiveClasses = "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-emerald-300";
                 const activeClasses = "bg-emerald-600 border-emerald-600 text-white shadow-md transform scale-105";
-                const todayClasses = i === currentDate && i !== currentDate ? "ring-2 ring-orange-500 ring-offset-2" : ""; // Modified logic to let active state take precedence purely on click, but keep orange ring for the actual current day.
                 
                 box.className = `${baseClasses} ${i === currentDate ? activeClasses : inactiveClasses} day-box`;
-                if(i === new Date().getDate() && i <= 30) {
+                if(i === currentDate) {
                     box.classList.add('ring-2', 'ring-orange-500', 'dark:ring-orange-400');
                 }
 
                 box.innerHTML = `
-                    <span class="text-sm md:text-base">Day ${i}</span>
-                    <span class="text-[10px] md:text-xs mt-1 ${i === currentDate ? 'text-emerald-100' : 'text-slate-500 dark:text-slate-400'} font-medium uppercase tracking-wider day-lbl">${getDayName(i).substring(0,3)}</span>
+                    <span class="text-sm md:text-base">${i}</span>
+                    <span class="text-[10px] md:text-[11px] mt-0.5 md:mt-1 ${i === currentDate ? 'text-emerald-100' : 'text-slate-500 dark:text-slate-400'} font-medium uppercase tracking-wider day-lbl">${dayStrEN}</span>
                 `;
                 
                 box.onclick = () => {
                     // Reset styling
                     document.querySelectorAll('.day-box').forEach(b => {
                         b.className = `${baseClasses} ${inactiveClasses} day-box`;
-                        if(parseInt(b.querySelector('span').innerText.replace('Day ', '')) === new Date().getDate()) {
+                        if(parseInt(b.querySelector('span').innerText) === currentDate) {
                              b.classList.add('ring-2', 'ring-orange-500', 'dark:ring-orange-400');
                         }
                     });
@@ -602,19 +619,24 @@
             const container = document.getElementById('day-view-container');
             const data = daysData[dayNum - 1];
             
+            const realDayNameEn = daysEn[data.realDayIndex];
+            const realDayNameKn = daysKn[data.realDayIndex];
+            
             let mondayBadge = data.isMonday ? `
-                <div class="mb-6 bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 px-4 py-3 rounded-xl flex items-center gap-3 shadow-sm">
-                    <span class="text-2xl">🌱</span>
+                <div class="mb-5 md:mb-6 bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 px-3 py-2.5 md:px-4 md:py-3 rounded-xl flex items-center gap-3 shadow-sm">
+                    <span class="text-xl md:text-2xl">🌱</span>
                     <div>
-                        <strong class="block text-emerald-900 dark:text-emerald-100">Monday Special: Pure Veg Menu</strong>
-                        <span class="text-sm">ಸೋಮವಾರದ ವಿಶೇಷ: ಸಂಪೂರ್ಣ ಸಸ್ಯಾಹಾರಿ</span>
+                        <strong class="block text-sm md:text-base text-emerald-900 dark:text-emerald-100">Monday Special: Pure Veg Menu</strong>
+                        <span class="text-xs md:text-sm">ಸೋಮವಾರದ ವಿಶೇಷ: ಸಂಪೂರ್ಣ ಸಸ್ಯಾಹಾರಿ</span>
                     </div>
                 </div>` : '';
 
             container.innerHTML = `
-                <div class="mb-4 pb-2 border-b-2 border-emerald-100 dark:border-emerald-900">
-                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Day ${dayNum}: ${getDayName(dayNum)} Menu</h2>
-                    <h3 class="text-lg text-kannada-light dark:text-kannada-dark mt-1 font-medium">${getDayNameKn(dayNum)} ಊಟದ ಯೋಜನೆ</h3>
+                <div class="mb-3 md:mb-4 pb-2 border-b-2 border-emerald-100 dark:border-emerald-900 flex justify-between items-end">
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100">${monthName} ${dayNum}: ${realDayNameEn}</h2>
+                        <h3 class="text-base md:text-lg text-kannada-light dark:text-kannada-dark mt-0.5 font-medium">${realDayNameKn} ಊಟದ ಯೋಜನೆ</h3>
+                    </div>
                 </div>
                 ${mondayBadge}
                 ${createRecipeAccordion('🌅 Breakfast (ಬೆಳಗಿನ ತಿಂಡಿ)', data.breakfast, true)}
@@ -626,7 +648,7 @@
         function createRecipeAccordion(mealType, recipe, isOpen) {
             const uid = Math.random().toString(36).substr(2, 9);
             
-            const badgeClasses = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border";
+            const badgeClasses = "inline-flex items-center px-2 py-0.5 md:px-2.5 rounded-full text-[10px] md:text-xs font-medium border";
             const tagHTML = recipe.tags.map(t => {
                 if(t === "Veg" || t === "Vegan") return `<span class="${badgeClasses} bg-green-50 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800">${t}</span>`;
                 if(t === "High Protein") return `<span class="${badgeClasses} bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-900/30 dark:text-sky-300 dark:border-sky-800">${t}</span>`;
@@ -637,11 +659,11 @@
             const youtubeLink = `https://www.youtube.com/results?search_query=${recipe.yt}`;
 
             return `
-                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden mb-4 transition-all">
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden mb-3 md:mb-4 transition-all">
                     <!-- Header -->
-                    <button class="w-full text-left px-4 py-3 md:px-5 md:py-4 focus:outline-none hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors flex justify-between items-center group" onclick="toggleAccordion('${uid}')">
+                    <button class="w-full text-left px-4 md:px-5 py-3 md:py-4 focus:outline-none hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors flex justify-between items-center group" onclick="toggleAccordion('${uid}')">
                         <div>
-                            <div class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-1">${mealType}</div>
+                            <div class="text-xs md:text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-0.5 md:mb-1">${mealType}</div>
                             <div class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">${recipe.name}</div>
                             <div class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mt-0.5 font-medium">${recipe.nameKn}</div>
                         </div>
@@ -654,43 +676,43 @@
                     
                     <!-- Body -->
                     <div id="${uid}" class="accordion-body ${isOpen ? 'active' : ''} bg-slate-50 dark:bg-slate-900/50">
-                        <div class="px-4 pb-4 pt-2 md:px-5 md:pb-5 border-t border-slate-100 dark:border-slate-700/50">
+                        <div class="px-4 md:px-5 pb-4 md:pb-5 pt-2 border-t border-slate-100 dark:border-slate-700/50">
                             
-                            <p class="text-slate-700 dark:text-slate-300 italic mb-1">${recipe.desc}</p>
-                            <p class="text-kannada-light dark:text-kannada-dark text-sm mb-4 font-medium">${recipe.descKn}</p>
+                            <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 italic mb-1">${recipe.desc}</p>
+                            <p class="text-kannada-light dark:text-kannada-dark text-xs md:text-sm mb-3 md:mb-4 font-medium">${recipe.descKn}</p>
                             
-                            <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 p-3 mb-4 text-sm text-blue-800 dark:text-blue-200 rounded-r-md">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 p-2.5 md:p-3 mb-3 md:mb-4 text-xs md:text-sm text-blue-800 dark:text-blue-200 rounded-r-md">
                                 <strong>Health Note:</strong> ${recipe.health}
                             </div>
                             
-                            <div class="flex flex-wrap gap-2 mb-6">
+                            <div class="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
                                 ${tagHTML}
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
                                 <!-- Left Col: Details & Ingredients -->
                                 <div>
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2"><span class="text-lg">📝</span> Details</h3>
-                                    <ul class="space-y-1 text-sm text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-6 shadow-sm">
+                                    <h3 class="text-sm md:text-base font-bold text-slate-800 dark:text-slate-200 mb-2.5 md:mb-3 flex items-center gap-2"><span class="text-base md:text-lg">📝</span> Details</h3>
+                                    <ul class="space-y-1 text-xs md:text-sm text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 p-3 md:p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-4 md:mb-6 shadow-sm">
                                         <li class="flex justify-between border-b border-slate-100 dark:border-slate-700 pb-1"><span>Prep Time:</span> <strong class="text-slate-800 dark:text-slate-200">${recipe.prep}</strong></li>
                                         <li class="flex justify-between border-b border-slate-100 dark:border-slate-700 pb-1 pt-1"><span>Cook Time:</span> <strong class="text-slate-800 dark:text-slate-200">${recipe.cook}</strong></li>
                                         <li class="flex justify-between border-b border-slate-100 dark:border-slate-700 pb-1 pt-1"><span>Serves:</span> <strong class="text-slate-800 dark:text-slate-200">${recipe.serves}</strong></li>
                                         <li class="flex justify-between pt-1"><span>GI Impact:</span> <strong class="text-emerald-600 dark:text-emerald-400">${recipe.gi}</strong></li>
                                     </ul>
 
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2"><span class="text-lg">🛒</span> Ingredients (ಸಾಮಗ್ರಿಗಳು)</h3>
-                                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-1 mb-6">
+                                    <h3 class="text-sm md:text-base font-bold text-slate-800 dark:text-slate-200 mb-2.5 md:mb-3 flex items-center gap-2"><span class="text-base md:text-lg">🛒</span> Ingredients (ಸಾಮಗ್ರಿಗಳು)</h3>
+                                    <ul class="list-disc list-inside space-y-1.5 md:space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 ml-1 mb-4 md:mb-6">
                                         ${recipe.ingredients.map(i => {
                                             const parts = i.split(' / ');
                                             if(parts.length > 1) {
-                                                return `<li>${parts[0]} <span class="text-kannada-light dark:text-kannada-dark text-sm block sm:inline sm:ml-1">/ ${parts[1]}</span></li>`;
+                                                return `<li>${parts[0]} <span class="text-kannada-light dark:text-kannada-dark text-xs block sm:inline sm:ml-1">/ ${parts[1]}</span></li>`;
                                             }
                                             return `<li>${i}</li>`;
                                         }).join('')}
                                     </ul>
                                     
-                                    <a href="${youtubeLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                    <a href="${youtubeLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-lg text-sm md:text-base font-bold transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5">
                                             <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
                                         </svg>
                                         YouTube Recipe Search
@@ -699,42 +721,42 @@
 
                                 <!-- Right Col: Instructions & Macros -->
                                 <div>
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2"><span class="text-lg">🍳</span> Instructions (ಮಾಡುವ ವಿಧಾನ)</h3>
-                                    <ol class="space-y-4 mb-6">
+                                    <h3 class="text-sm md:text-base font-bold text-slate-800 dark:text-slate-200 mb-2.5 md:mb-3 flex items-center gap-2"><span class="text-base md:text-lg">🍳</span> Instructions (ಮಾಡುವ ವಿಧಾನ)</h3>
+                                    <ol class="space-y-3 md:space-y-4 mb-4 md:mb-6">
                                         ${recipe.instructions.map((i, index) => `
-                                            <li class="flex gap-3">
-                                                <div class="shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">${index + 1}</div>
+                                            <li class="flex gap-2.5 md:gap-3">
+                                                <div class="shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 text-[10px] md:text-xs font-bold flex items-center justify-center mt-0.5">${index + 1}</div>
                                                 <div>
-                                                    <div class="text-slate-700 dark:text-slate-300">${i.en}</div>
-                                                    <div class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">${i.kn}</div>
+                                                    <div class="text-xs md:text-sm text-slate-700 dark:text-slate-300">${i.en}</div>
+                                                    <div class="text-kannada-light dark:text-kannada-dark text-xs mt-0.5 md:mt-1 font-medium">${i.kn}</div>
                                                 </div>
                                             </li>
                                         `).join('')}
                                     </ol>
 
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2"><span class="text-lg">📊</span> Macros (per serving)</h3>
+                                    <h3 class="text-sm md:text-base font-bold text-slate-800 dark:text-slate-200 mb-2.5 md:mb-3 flex items-center gap-2"><span class="text-base md:text-lg">📊</span> Macros (per serving)</h3>
                                     <div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
-                                        <table class="w-full text-left text-sm">
+                                        <table class="w-full text-left text-xs md:text-sm">
                                             <tbody class="divide-y divide-slate-100 dark:divide-slate-700/50">
                                                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
-                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50 w-1/3">Calories</th>
-                                                    <td class="px-4 py-2 font-bold text-slate-800 dark:text-slate-200">${recipe.macros.cal} kcal</td>
+                                                    <th class="px-3 md:px-4 py-1.5 md:py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50 w-1/3">Calories</th>
+                                                    <td class="px-3 md:px-4 py-1.5 md:py-2 font-bold text-slate-800 dark:text-slate-200">${recipe.macros.cal} kcal</td>
                                                 </tr>
                                                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
-                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Protein</th>
-                                                    <td class="px-4 py-2 text-slate-700 dark:text-slate-300">${recipe.macros.pro} g <span class="ml-2 text-[10px] uppercase font-bold tracking-wider text-sky-600 bg-sky-100 dark:bg-sky-900/30 dark:text-sky-400 px-1.5 py-0.5 rounded">High</span></td>
+                                                    <th class="px-3 md:px-4 py-1.5 md:py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Protein</th>
+                                                    <td class="px-3 md:px-4 py-1.5 md:py-2 text-slate-700 dark:text-slate-300">${recipe.macros.pro} g <span class="ml-1 md:ml-2 text-[8px] md:text-[10px] uppercase font-bold tracking-wider text-sky-600 bg-sky-100 dark:bg-sky-900/30 dark:text-sky-400 px-1 md:px-1.5 py-0.5 rounded">High</span></td>
                                                 </tr>
                                                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
-                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Carbs</th>
-                                                    <td class="px-4 py-2 text-slate-700 dark:text-slate-300">${recipe.macros.carb} g</td>
+                                                    <th class="px-3 md:px-4 py-1.5 md:py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Carbs</th>
+                                                    <td class="px-3 md:px-4 py-1.5 md:py-2 text-slate-700 dark:text-slate-300">${recipe.macros.carb} g</td>
                                                 </tr>
                                                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
-                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Fiber</th>
-                                                    <td class="px-4 py-2 text-slate-700 dark:text-slate-300">${recipe.macros.fib} g <span class="ml-2 text-[10px] uppercase font-bold tracking-wider text-amber-700 bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400 px-1.5 py-0.5 rounded">High</span></td>
+                                                    <th class="px-3 md:px-4 py-1.5 md:py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Fiber</th>
+                                                    <td class="px-3 md:px-4 py-1.5 md:py-2 text-slate-700 dark:text-slate-300">${recipe.macros.fib} g <span class="ml-1 md:ml-2 text-[8px] md:text-[10px] uppercase font-bold tracking-wider text-amber-700 bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400 px-1 md:px-1.5 py-0.5 rounded">High</span></td>
                                                 </tr>
                                                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
-                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Fat</th>
-                                                    <td class="px-4 py-2 text-slate-700 dark:text-slate-300">${recipe.macros.fat} g</td>
+                                                    <th class="px-3 md:px-4 py-1.5 md:py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Fat</th>
+                                                    <td class="px-3 md:px-4 py-1.5 md:py-2 text-slate-700 dark:text-slate-300">${recipe.macros.fat} g</td>
                                                 </tr>
                                             </tbody>
                                         </table>
