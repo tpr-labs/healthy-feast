@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Healthy Feast: A complete 30-day diabetic-friendly, high-protein Indian meal plan with Kannada instructions.">
+    <title>Healthy Feast | 30-Day Diabetic Meal Plan</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration for Custom Colors & Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'media',
+            theme: {
+                extend: {
+                    colors: {
+                        kannada: {
+                            light: '#0369a1', // text-sky-700
+                            dark: '#7dd3fc',  // text-sky-300
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar for tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Smooth height transition for accordion */
+        .accordion-body {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-body.active {
+            max-height: 2000px; /* Arbitrary large number to fit content */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm px-4 py-3 flex flex-col items-center justify-center">
+        <div class="text-xl font-bold text-emerald-600 flex items-center gap-2">🥗 Healthy Feast</div>
+        <div class="text-sm text-slate-500 dark:text-slate-400">Diabetic-Friendly Bengaluru Meal Plan</div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-6 md:py-8">
+        
+        <!-- Hero Section -->
+        <div class="text-center p-8 md:p-12 bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-2xl shadow-lg mb-8 relative overflow-hidden">
+            <!-- Decorative background circles -->
+            <div class="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-48 h-48 bg-white/10 rounded-full translate-x-1/4 translate-y-1/4"></div>
+            
+            <div class="relative z-10">
+                <h1 class="text-3xl md:text-4xl font-extrabold mb-2 drop-shadow-md">30-Day Diabetic Meal Plan</h1>
+                <h2 class="text-xl md:text-2xl font-medium text-emerald-100 mb-4 drop-shadow">Healthy Feast: 30 ದಿನಗಳ ಊಟದ ಯೋಜನೆ</h2>
+                <p class="text-emerald-50 max-w-2xl mx-auto">High Protein • High Fiber • Local Flavors • Dual Language</p>
+                <div class="mt-6 inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/30 shadow-inner" id="current-day-banner">
+                    Loading today's plan...
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="flex overflow-x-auto gap-3 mb-8 pb-2 no-scrollbar border-b border-slate-200 dark:border-slate-700" id="tabs-container">
+            <button class="tab-btn active px-5 py-2.5 rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-emerald-600 text-white" data-target="meal-plan">
+                📅 Meal Plan (ಊಟದ ಯೋಜನೆ)
+            </button>
+            <button class="tab-btn px-5 py-2.5 rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 border-b-0" data-target="groceries">
+                🛒 Groceries & Prep (ದಿನಸಿ)
+            </button>
+            <button class="tab-btn px-5 py-2.5 rounded-t-lg font-semibold whitespace-nowrap transition-colors bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 border-b-0" data-target="guidelines">
+                🚶‍♂️ Guidelines (ಮಾರ್ಗಸೂಚಿಗಳು)
+            </button>
+        </div>
+
+        <!-- SECTIONS -->
+        
+        <!-- MEAL PLAN SECTION -->
+        <div id="meal-plan" class="section-content block animate-[fadeIn_0.3s_ease-in-out]">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+                <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">Select Day (ದಿನವನ್ನು ಆಯ್ಕೆಮಾಡಿ)</h3>
+                <p class="text-sm text-emerald-600 dark:text-emerald-400 font-medium bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-md">
+                    <em>Note: Every Monday (Days 1, 8, 15, 22, 29) is Pure Veg! (ಪ್ರತಿ ಸೋಮವಾರ ಸಸ್ಯಾಹಾರಿ)</em>
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-10 gap-2 mb-8" id="calendar-grid">
+                <!-- JS Populated -->
+            </div>
+            
+            <div id="day-view-container" class="space-y-4">
+                <!-- JS Populated -->
+            </div>
+        </div>
+
+        <!-- GROCERIES SECTION -->
+        <div id="groceries" class="section-content hidden animate-[fadeIn_0.3s_ease-in-out] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8">
+            <h2 class="text-2xl font-bold text-emerald-600 mb-2 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2">🛒 Weekly Groceries (ವಾರದ ದಿನಸಿ)</h2>
+            <p class="text-slate-600 dark:text-slate-300 mb-1">Stock up on these essentials available in local Bengaluru markets.</p>
+            <p class="text-kannada-light dark:text-kannada-dark text-sm mb-6 font-medium">ಸ್ಥಳೀಯ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಸಿಗುವ ಈ ಅಗತ್ಯ ವಸ್ತುಗಳನ್ನು ತಂದುಟ್ಟುಕೊಳ್ಳಿ.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-3 flex items-center gap-2"><span class="text-xl">🌾</span> Grains & Millets (ಸಿರಿಧಾನ್ಯಗಳು)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-2">
+                        <li>Ragi Flour <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ರಾಗಿ ಹಿಟ್ಟು</span></li>
+                        <li>Foxtail & Little Millets <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ನವಣೆ, ಸಾಮೆ</span></li>
+                        <li>Jowar Flour & Broken Wheat <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಜೋಳದ ಹಿಟ್ಟು, ದಲಿಯಾ</span></li>
+                        <li>Brown Rice & Rolled Oats <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಕೆಂಪಕ್ಕಿ, ಓಟ್ಸ್</span></li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-bold mt-6 mb-3 flex items-center gap-2"><span class="text-xl">🥦</span> Vegetables (ತರಕಾರಿಗಳು)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-2">
+                        <li>Palak, Methi <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಪಾಲಕ್, ಮೆಂತ್ಯ ಸೊಪ್ಪು</span></li>
+                        <li>Bottle gourd, Bitter gourd <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಸೋರೆಕಾಯಿ, ಹಾಗಲಕಾಯಿ</span></li>
+                        <li>Onions, Tomatoes, Garlic <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಈರುಳ್ಳಿ, ಟೊಮೆಟೊ, ಬೆಳ್ಳುಳ್ಳಿ</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-3 flex items-center gap-2"><span class="text-xl">🥚</span> Proteins (ಪ್ರೋಟೀನ್)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-2">
+                        <li>Toor Dal, Moong Dal, Chana <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ತೊಗರಿಬೇಳೆ, ಹೆಸರುಬೇಳೆ, ಕಡಲೆ</span></li>
+                        <li>Paneer (Low-fat) <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಪನೀರ್</span></li>
+                        <li>Eggs (Tray of 30) <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಮೊಟ್ಟೆ</span></li>
+                        <li>Chicken Breast <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಚಿಕನ್</span> <span class="text-xs text-slate-400">(Optional)</span></li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-bold mt-6 mb-3 flex items-center gap-2"><span class="text-xl">🥜</span> Seeds & Dairy (ಬೀಜಗಳು ಮತ್ತು ಹೈನುಗಾರಿಕೆ)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-2">
+                        <li>Almonds, Walnuts <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಬಾದಾಮಿ, ವಾಲ್ನಟ್</span></li>
+                        <li>Chia, Pumpkin seeds <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಚಿಯಾ ಬೀಜ, ಕುಂಬಳಕಾಯಿ ಬೀಜ</span></li>
+                        <li>Curd, Buttermilk <span class="text-kannada-light dark:text-kannada-dark text-sm ml-1">/ ಮೊಸರು, ಮಜ್ಜಿಗೆ</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold text-emerald-600 mb-4 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2 mt-8">🔪 Sunday Prep (ಭಾನುವಾರದ ತಯಾರಿ)</h2>
+            <ul class="space-y-4 text-slate-700 dark:text-slate-300">
+                <li class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-lg border border-slate-100 dark:border-slate-700">
+                    <strong>Batter Prep:</strong> Grind and ferment Ragi/Oats Dosa batters.
+                    <div class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಹಿಟ್ಟಿನ ತಯಾರಿ: ರಾಗಿ ಅಥವಾ ಓಟ್ಸ್ ದೋಸೆ ಹಿಟ್ಟನ್ನು ರುಬ್ಬಿ ಹುದುಗಲು ಇಡಿ.</div>
+                </li>
+                <li class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-lg border border-slate-100 dark:border-slate-700">
+                    <strong>Sprouting:</strong> Soak green moong to have fresh sprouts for the week.
+                    <div class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಮೊಳಕೆ ಬರಿಸುವುದು: ವಾರದ ಸಲಾಡ್‌ಗಳಿಗಾಗಿ ಹೆಸರುಕಾಳನ್ನು ನೆನೆಸಿ ಮೊಳಕೆ ಬರಿಸಿ.</div>
+                </li>
+                <li class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-lg border border-slate-100 dark:border-slate-700">
+                    <strong>Pastes:</strong> Make ginger-garlic paste to cut cooking time.
+                    <div class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಶುಂಠಿ-ಬೆಳ್ಳುಳ್ಳಿ ಪೇಸ್ಟ್ ಮಾಡಿ ಫ್ರಿಡ್ಜ್‌ನಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಿ.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- GUIDELINES SECTION -->
+        <div id="guidelines" class="section-content hidden animate-[fadeIn_0.3s_ease-in-out] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8">
+            <h2 class="text-2xl font-bold text-emerald-600 mb-6 border-b-2 border-emerald-100 dark:border-emerald-900 pb-2">🚶‍♂️ Lifestyle Guidelines (ಜೀವನಶೈಲಿ ಮಾರ್ಗಸೂಚಿಗಳು)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><span class="text-2xl">💧</span> Hydration (ನೀರು ಕುಡಿಯುವುದು)</h3>
+                        <p class="text-slate-700 dark:text-slate-300">Drink at least 2.5 to 3 Liters of water daily. Avoid sugary juices.</p>
+                        <p class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ದಿನಕ್ಕೆ ಕನಿಷ್ಠ 2.5 ರಿಂದ 3 ಲೀಟರ್ ನೀರು ಕುಡಿಯಿರಿ. ಸಕ್ಕರೆ ಹಾಕಿದ ಜ್ಯೂಸ್ ಬೇಡ. ಮಜ್ಜಿಗೆ ಮತ್ತು ಜೀರಿಗೆ ನೀರು ಉತ್ತಮ.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><span class="text-2xl">🏃</span> Exercise (ವ್ಯಾಯಾಮ)</h3>
+                        <p class="text-slate-700 dark:text-slate-300"><strong>10-Minute Walk:</strong> Walk for 10-15 minutes immediately after Lunch and Dinner. This blunts the blood sugar spike.</p>
+                        <p class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಊಟ ಮತ್ತು ರಾತ್ರಿಯ ಊಟದ ನಂತರ ತಕ್ಷಣ 10-15 ನಿಮಿಷಗಳ ಕಾಲ ನಡೆಯಿರಿ. ಇದು ಮಧುಮೇಹ ನಿಯಂತ್ರಣಕ್ಕೆ ಬಹಳ ಮುಖ್ಯ.</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><span class="text-2xl">🍽️</span> Portion Control (ಊಟದ ಪ್ರಮಾಣ)</h3>
+                        <p class="text-slate-700 dark:text-slate-300">Use the "Healthy Plate Method": ½ vegetables, ¼ protein, ¼ complex carbs.</p>
+                        <p class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ನಿಮ್ಮ ತಟ್ಟೆಯಲ್ಲಿ: ಅರ್ಧ ಭಾಗ ತರಕಾರಿ ಪಲ್ಯ/ಸಲಾಡ್, ಕಾಲು ಭಾಗ ಪ್ರೋಟೀನ್ (ಬೇಳೆ/ಮೊಟ್ಟೆ), ಕಾಲು ಭಾಗ ಅನ್ನ ಅಥವಾ ರೊಟ್ಟಿ ಇರಬೇಕು.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-bold mb-2 flex items-center gap-2 text-red-500"><span class="text-2xl">🚫</span> Avoid (ತಿನ್ನಬಾರದ ಆಹಾರಗಳು)</h3>
+                        <p class="text-slate-700 dark:text-slate-300">Maida, white sugar, jaggery, bakery items, deep-fried snacks.</p>
+                        <p class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">ಮೈದಾ, ಬಿಳಿ ಸಕ್ಕರೆ, ಬೆಲ್ಲ, ಬೇಕರಿ ತಿನಿಸುಗಳು ಮತ್ತು ಎಣ್ಣೆಯಲ್ಲಿ ಕರಿದ ಪದಾರ್ಥಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಬಿಡಿ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all transform scale-0 opacity-0 z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <script>
+        // --- DATA WITH KANNADA TRANSLATIONS & VEG FLAGS (English Numerals Only) ---
+        
+        const breakfastPool = [
+            {
+                name: "Ragi Idli with Sambar", nameKn: "ರಾಗಿ ಇಡ್ಲಿ ಮತ್ತು ಸಾಂಬಾರ್",
+                desc: "Steamed finger millet cakes served with vegetable lentil stew.",
+                descKn: "ಆವಿಯಲ್ಲಿ ಬೇಯಿಸಿದ ರಾಗಿ ಇಡ್ಲಿ ಮತ್ತು ತರಕಾರಿ ಸಾಂಬಾರ್.",
+                health: "Ragi has a low GI and is rich in calcium. Sambar adds essential protein.",
+                prep: "15m", cook: "20m", serves: 2, isVeg: true,
+                ingredients: ["1 cup Ragi flour / ರಾಗಿ ಹಿಟ್ಟು", "0.5 cup Urad Dal / ಉದ್ದಿನಬೇಳೆ", "Mixed veggies / ತರಕಾರಿಗಳು", "0.5 cup Toor Dal / ತೊಗರಿಬೇಳೆ", "Spices / ಮಸಾಲೆಗಳು"],
+                instructions: [
+                    { en: "Grind soaked urad dal and mix with ragi flour. Ferment overnight.", kn: "ನೆನೆಸಿದ ಉದ್ದಿನಬೇಳೆ ರುಬ್ಬಿ ರಾಗಿ ಹಿಟ್ಟಿನೊಂದಿಗೆ ಬೆರೆಸಿ. ರಾತ್ರಿ ಪೂರ್ತಿ ಹುದುಗಲು ಬಿಡಿ." },
+                    { en: "Steam batter in idli plates for 12 mins.", kn: "ಇಡ್ಲಿ ಪಾತ್ರೆಯಲ್ಲಿ 12 ನಿಮಿಷ ಬೇಯಿಸಿ." },
+                    { en: "Pressure cook toor dal and veggies.", kn: "ತೊಗರಿಬೇಳೆ ಮತ್ತು ತರಕಾರಿಗಳನ್ನು ಕುಕ್ಕರ್‌ನಲ್ಲಿ ಬೇಯಿಸಿ." },
+                    { en: "Temper sambar with mustard, curry leaves, and mix.", kn: "ಸಾಸಿವೆ, ಕರಿಬೇವು ಒಗ್ಗರಣೆ ಕೊಡಿ." }
+                ],
+                macros: { cal: 320, pro: 12, carb: 45, fib: 8, fat: 5 }, gi: "Low GI", cost: 45,
+                tags: ["High Fiber", "Vegan", "South Indian"], yt: "Ragi+Idli+Sambar+Recipe"
+            },
+            {
+                name: "Oats & Vegetable Upma", nameKn: "ಓಟ್ಸ್ ಮತ್ತು ತರಕಾರಿ ಉಪ್ಪಿಟ್ಟು",
+                desc: "Savory rolled oats cooked with generous amounts of crunchy vegetables.",
+                descKn: "ತರಕಾರಿಗಳು ತುಂಬಿರುವ ರುಚಿಕರವಾದ ಓಟ್ಸ್ ಉಪ್ಪಿಟ್ಟು.",
+                health: "Oats contain beta-glucan fiber which helps stabilize blood sugar.",
+                prep: "10m", cook: "15m", serves: 2, isVeg: true,
+                ingredients: ["1 cup Rolled Oats / ಓಟ್ಸ್", "1 cup chopped veggies / ಕತ್ತರಿಸಿದ ತರಕಾರಿ", "1 tsp oil/ghee / ಎಣ್ಣೆ/ತುಪ್ಪ", "Mustard, curry leaves / ಸಾಸಿವೆ, ಕರಿಬೇವು"],
+                instructions: [
+                    { en: "Dry roast oats for 3-4 mins.", kn: "ಓಟ್ಸ್ ಅನ್ನು 3-4 ನಿಮಿಷ ಹುರಿಯಿರಿ." },
+                    { en: "Heat oil, add tempering (mustard, chili, curry leaves).", kn: "ಎಣ್ಣೆ ಬಿಸಿ ಮಾಡಿ, ಸಾಸಿವೆ, ಹಸಿಮೆಣಸಿನಕಾಯಿ, ಕರಿಬೇವು ಒಗ್ಗರಣೆ ಕೊಡಿ." },
+                    { en: "Sauté veggies until tender. Add 1.5 cups water and boil.", kn: "ತರಕಾರಿಗಳನ್ನು ಹುರಿದು, 1.5 ಕಪ್ ನೀರು ಸೇರಿಸಿ ಕುದಿಸಿ." },
+                    { en: "Stir in oats, cover and cook for 5 mins.", kn: "ಓಟ್ಸ್ ಸೇರಿಸಿ, ನೀರು ಹೀರುವವರೆಗೆ 5 ನಿಮಿಷ ಮುಚ್ಚಿ ಬೇಯಿಸಿ." }
+                ],
+                macros: { cal: 280, pro: 9, carb: 42, fib: 7, fat: 6 }, gi: "Medium-Low GI", cost: 35,
+                tags: ["Quick Prep", "High Fiber"], yt: "Healthy+Oats+Upma+Recipe"
+            },
+            {
+                name: "Moong Dal Chilla", nameKn: "ಹೆಸರು ಬೇಳೆ ದೋಸೆ (ಪೆಸರಟ್ಟು)",
+                desc: "Savory green gram pancakes, highly nutritious and protein-packed.",
+                descKn: "ಹೆಸರು ಬೇಳೆಯಿಂದ ಮಾಡಿದ ಪ್ರೋಟೀನ್-ಭರಿತ ಗರಿಗರಿಯಾದ ದೋಸೆ.",
+                health: "Excellent source of plant protein and complex carbs.",
+                prep: "10m", cook: "15m", serves: 2, isVeg: true,
+                ingredients: ["1 cup Green Moong Dal / ಹೆಸರು ಬೇಳೆ", "Ginger / ಶುಂಠಿ", "Green Chilies / ಹಸಿಮೆಣಸಿನಕಾಯಿ", "Salt / ಉಪ್ಪು", "1 tsp Oil / ಎಣ್ಣೆ"],
+                instructions: [
+                    { en: "Blend soaked dal, ginger, chilies, and salt into a batter.", kn: "ನೆನೆಸಿದ ಬೇಳೆ, ಶುಂಠಿ, ಮೆಣಸಿನಕಾಯಿ, ಉಪ್ಪು ಸೇರಿಸಿ ನುಣ್ಣಗೆ ರುಬ್ಬಿ." },
+                    { en: "Heat a tawa, pour batter and spread thinly.", kn: "ಕಾವಲಿ ಬಿಸಿ ಮಾಡಿ, ಹಿಟ್ಟು ಹಾಕಿ ತೆಳುವಾಗಿ ಹರಡಿ." },
+                    { en: "Drizzle oil. Cook until crisp on both sides.", kn: "ಸ್ವಲ್ಪ ಎಣ್ಣೆ ಬಿಟ್ಟು, ಗರಿಗರಿಯಾಗುವವರೆಗೆ ಎರಡು ಕಡೆ ಬೇಯಿಸಿ." },
+                    { en: "Serve with green chutney.", kn: "ಪುದೀನಾ ಚಟ್ನಿಯೊಂದಿಗೆ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 260, pro: 14, carb: 35, fib: 9, fat: 4 }, gi: "Low GI", cost: 40,
+                tags: ["High Protein", "Vegan"], yt: "Moong+Dal+Chilla+Recipe"
+            },
+            {
+                name: "Egg White Bhurji & Toast", nameKn: "ಮೊಟ್ಟೆಯ ಭುರ್ಜಿ ಮತ್ತು ಬ್ರೆಡ್",
+                desc: "Scrambled egg whites with onions, tomatoes, and Indian spices.",
+                descKn: "ಈರುಳ್ಳಿ, ಟೊಮೆಟೊ ಮತ್ತು ಮಸಾಲೆಗಳೊಂದಿಗೆ ಮಾಡಿದ ಮೊಟ್ಟೆಯ ಬಿಳಿಭಾಗದ ಭುರ್ಜಿ.",
+                health: "Pure, highly bioavailable protein. Lowers morning sugar spikes.",
+                prep: "5m", cook: "10m", serves: 1, isVeg: false,
+                ingredients: ["4 Egg Whites / ಮೊಟ್ಟೆಯ ಬಿಳಿಭಾಗ", "1 Onion, 1 Tomato / ಈರುಳ್ಳಿ, ಟೊಮೆಟೊ", "Green chilies / ಮೆಣಸಿನಕಾಯಿ", "2 slices Whole Wheat Bread / ಗೋಧಿ ಬ್ರೆಡ್"],
+                instructions: [
+                    { en: "Heat oil, sauté onions and chilies.", kn: "ಎಣ್ಣೆ ಬಿಸಿ ಮಾಡಿ, ಈರುಳ್ಳಿ ಮತ್ತು ಮೆಣಸಿನಕಾಯಿ ಹುರಿಯಿರಿ." },
+                    { en: "Add tomatoes and turmeric, cook until soft.", kn: "ಟೊಮೆಟೊ ಮತ್ತು ಅರಿಶಿನ ಸೇರಿಸಿ, ಮೆತ್ತಗಾಗುವವರೆಗೆ ಬೇಯಿಸಿ." },
+                    { en: "Pour beaten eggs, scramble continuously.", kn: "ಮೊಟ್ಟೆ ಸೇರಿಸಿ, ಚೆನ್ನಾಗಿ ಬೇಯುವವರೆಗೆ 5 ನಿಮಿಷ ತಿರುಗಿಸಿ." },
+                    { en: "Toast bread and serve hot.", kn: "ಬ್ರೆಡ್ ಟೋಸ್ಟ್ ಮಾಡಿ ಬಿಸಿಬಿಸಿಯಾಗಿ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 290, pro: 22, carb: 28, fib: 5, fat: 9 }, gi: "Low GI", cost: 50,
+                tags: ["High Protein", "Non-Veg"], yt: "Egg+White+Bhurji+Recipe"
+            },
+            {
+                name: "Broken Wheat (Dalia) Pongal", nameKn: "ಗೋಧಿ ತರಿ (ದಲಿಯಾ) ಪೊಂಗಲ್",
+                desc: "A healthy twist on traditional South Indian Ven Pongal using Dalia.",
+                descKn: "ಗೋಧಿ ತರಿ ಮತ್ತು ಹೆಸರು ಬೇಳೆಯಿಂದ ಮಾಡಿದ ಆರೋಗ್ಯಕರ ಪೊಂಗಲ್.",
+                health: "Dalia has a lower GI than white rice and Moong dal adds protein.",
+                prep: "5m", cook: "20m", serves: 2, isVeg: true,
+                ingredients: ["0.5 cup Dalia / ಗೋಧಿ ತರಿ", "0.25 cup Moong Dal / ಹೆಸರು ಬೇಳೆ", "1 tsp Ghee / ತುಪ್ಪ", "Black pepper, cumin / ಕಾಳುಮೆಣಸು, ಜೀರಿಗೆ"],
+                instructions: [
+                    { en: "Dry roast dalia and moong dal slightly.", kn: "ದಲಿಯಾ ಮತ್ತು ಹೆಸರು ಬೇಳೆಯನ್ನು ಸ್ವಲ್ಪ ಹುರಿಯಿರಿ." },
+                    { en: "Pressure cook with 2.5 cups water and salt.", kn: "2.5 ಕಪ್ ನೀರು ಮತ್ತು ಉಪ್ಪು ಸೇರಿಸಿ ಕುಕ್ಕರ್‌ನಲ್ಲಿ 3 ಕೂಗು ಕೂಗಿಸಿ." },
+                    { en: "Temper pepper, cumin, ginger, and curry leaves in ghee.", kn: "ತುಪ್ಪದಲ್ಲಿ ಕಾಳುಮೆಣಸು, ಜೀರಿಗೆ, ಶುಂಠಿ, ಕರಿಬೇವು ಒಗ್ಗರಣೆ ಮಾಡಿ." },
+                    { en: "Mix tempering into the cooked dalia.", kn: "ಬೆಂದ ಪೊಂಗಲ್ ಗೆ ಒಗ್ಗರಣೆ ಸೇರಿಸಿ." }
+                ],
+                macros: { cal: 310, pro: 11, carb: 48, fib: 8, fat: 8 }, gi: "Medium GI", cost: 30,
+                tags: ["Comfort Food", "Veg"], yt: "Broken+Wheat+Pongal+Recipe"
+            }
+        ];
+
+        const lunchPool = [
+            {
+                name: "Foxtail Millet Bisi Bele Bath", nameKn: "ನವಣೆ ಬಿಸಿ ಬೇಳೆ ಭಾತ್",
+                desc: "Spicy one-pot meal made with millets, lentils, and veggies.",
+                descKn: "ನವಣೆ, ಬೇಳೆ ಮತ್ತು ತರಕಾರಿಗಳಿಂದ ಮಾಡಿದ ಮಸಾಲೆಯುಕ್ತ ಭಾತ್.",
+                health: "Foxtail millet is diabetic-friendly. Balanced complete meal.",
+                prep: "15m", cook: "25m", serves: 2, isVeg: true,
+                ingredients: ["0.5 cup Foxtail Millet / ನವಣೆ", "0.5 cup Toor Dal / ತೊಗರಿಬೇಳೆ", "Mixed veg / ತರಕಾರಿಗಳು", "BBB powder / ಬಿಸಿ ಬೇಳೆ ಭಾತ್ ಪುಡಿ", "Tamarind / ಹುಣಸೆಹಣ್ಣು"],
+                instructions: [
+                    { en: "Pressure cook millet and dal together.", kn: "ನವಣೆ ಮತ್ತು ತೊಗರಿಬೇಳೆಯನ್ನು 3 ಕಪ್ ನೀರಿನೊಂದಿಗೆ ಕುಕ್ಕರ್‌ನಲ್ಲಿ ಬೇಯಿಸಿ." },
+                    { en: "Boil veggies with tamarind extract and BBB powder.", kn: "ತರಕಾರಿಗಳನ್ನು ಹುಣಸೆ ರಸ, ಉಪ್ಪು ಮತ್ತು ಬಿಸಿ ಬೇಳೆ ಭಾತ್ ಪುಡಿಯೊಂದಿಗೆ ಬೇಯಿಸಿ." },
+                    { en: "Mix cooked millet-dal into the veggie stew. Simmer for 5 mins.", kn: "ಬೆಂದ ಬೇಳೆ-ನವಣೆ ಮಿಶ್ರಣವನ್ನು ತರಕಾರಿಗೆ ಸೇರಿಸಿ 5 ನಿಮಿಷ ಕುದಿಸಿ." },
+                    { en: "Temper with mustard seeds and curry leaves.", kn: "ಸಾಸಿವೆ, ಕರಿಬೇವು ಒಗ್ಗರಣೆ ಕೊಡಿ." }
+                ],
+                macros: { cal: 340, pro: 13, carb: 55, fib: 11, fat: 7 }, gi: "Medium-Low GI", cost: 60,
+                tags: ["One Pot", "Veg", "South Indian"], yt: "Foxtail+Millet+Bisi+Bele+Bath"
+            },
+            {
+                name: "Chicken/Soya Curry with Phulka", nameKn: "ಚಿಕನ್ / ಸೋಯಾ ಕರಿ ಮತ್ತು 2 ಪುಲ್ಕ",
+                desc: "Whole wheat rotis served with a protein-rich, low-oil gravy.",
+                descKn: "ಪ್ರೋಟೀನ್-ಭರಿತ ಕಡಿಮೆ ಎಣ್ಣೆಯ ಗ್ರೇವಿ ಮತ್ತು ಗೋಧಿ ಪುಲ್ಕ.",
+                health: "Excellent lean protein source to maintain muscle mass.",
+                prep: "15m", cook: "30m", serves: 2, isVeg: false,
+                ingredients: ["Whole wheat flour / ಗೋಧಿ ಹಿಟ್ಟು", "200g Chicken OR Soya / ಚಿಕನ್ ಅಥವಾ ಸೋಯಾ", "Onion, Tomato / ಈರುಳ್ಳಿ, ಟೊಮೆಟೊ", "Spices / ಮಸಾಲೆಗಳು"],
+                instructions: [
+                    { en: "Knead dough and make soft phulkas without oil.", kn: "ಹಿಟ್ಟು ಕಲಸಿ ಎಣ್ಣೆ ಇಲ್ಲದೆ ಮೃದುವಾದ ಪುಲ್ಕ ಮಾಡಿ." },
+                    { en: "Sauté ginger-garlic and onion-tomato base.", kn: "ಶುಂಠಿ-ಬೆಳ್ಳುಳ್ಳಿ ಮತ್ತು ಈರುಳ್ಳಿ-ಟೊಮೆಟೊ ಮಿಶ್ರಣವನ್ನು ಎಣ್ಣೆ ಬಿಡುವವರೆಗೆ ಹುರಿಯಿರಿ." },
+                    { en: "Add chicken/soya chunks, spices, and water. Simmer.", kn: "ಚಿಕನ್/ಸೋಯಾ, ಮಸಾಲೆ ಮತ್ತು ನೀರು ಸೇರಿಸಿ 15 ನಿಮಿಷ ಬೇಯಿಸಿ." },
+                    { en: "Serve 2 phulkas with curry.", kn: "2 ಪುಲ್ಕ ಮತ್ತು 1 ಕಪ್ ಕರಿಯೊಂದಿಗೆ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 380, pro: 28, carb: 45, fib: 8, fat: 10 }, gi: "Low GI", cost: 80,
+                tags: ["High Protein", "Non-Veg/Soya"], yt: "Healthy+Chicken+Curry+Phulka"
+            },
+            {
+                name: "Brown Rice Sambar & Poriyal", nameKn: "ಕೆಂಪಕ್ಕಿ ಅನ್ನ, ಸಾಂಬಾರ್ ಮತ್ತು ಎಲೆಕೋಸು ಪಲ್ಯ",
+                desc: "Classic South Indian meal optimized with brown rice and high-fiber sides.",
+                descKn: "ಕೆಂಪಕ್ಕಿ, ಸಾಂಬಾರ್ ಮತ್ತು ನಾರಿನಂಶವಿರುವ ಎಲೆಕೋಸು ಪಲ್ಯ.",
+                health: "Brown rice provides sustained energy. Cabbage is low calorie.",
+                prep: "15m", cook: "30m", serves: 2, isVeg: true,
+                ingredients: ["0.5 cup Brown Rice / ಕೆಂಪಕ್ಕಿ", "Sambar / ಸಾಂಬಾರ್", "2 cups Cabbage / ಎಲೆಕೋಸು", "Coconut / ಕಾಯಿತುರಿ"],
+                instructions: [
+                    { en: "Pressure cook soaked brown rice.", kn: "ನೆನೆಸಿದ ಕೆಂಪಕ್ಕಿಯನ್ನು ಕುಕ್ಕರ್‌ನಲ್ಲಿ ಬೇಯಿಸಿ." },
+                    { en: "Prepare standard sambar.", kn: "ಸಾಮಾನ್ಯ ಸಾಂಬಾರ್ ತಯಾರಿಸಿ." },
+                    { en: "Temper and sauté cabbage till crunchy. Garnish with coconut.", kn: "ಒಗ್ಗರಣೆ ಕೊಟ್ಟು, ಎಲೆಕೋಸು ಹುರಿಯಿರಿ. ಸ್ವಲ್ಪ ಕಾಯಿತುರಿ ಉದುರಿಸಿ." },
+                    { en: "Serve 1 small cup rice, sambar, and large cup poriyal.", kn: "1 ಕಪ್ ಅನ್ನ, ಸಾಂಬಾರ್ ಮತ್ತು ಪಲ್ಯದೊಂದಿಗೆ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 350, pro: 14, carb: 50, fib: 12, fat: 8 }, gi: "Medium GI", cost: 55,
+                tags: ["Veg", "Balanced Meal"], yt: "Brown+Rice+Sambar+Poriyal"
+            },
+            {
+                name: "Palak Dal with Ragi Mudde", nameKn: "ಪಾಲಕ್ ದಾಲ್ ಮತ್ತು ರಾಗಿ ಮುದ್ದೆ",
+                desc: "Traditional Karnataka Ragi balls served with spinach lentil curry.",
+                descKn: "ಸಾಂಪ್ರದಾಯಿಕ ಕರ್ನಾಟಕದ ರಾಗಿ ಮುದ್ದೆ ಮತ್ತು ಪಾಲಕ್ ಬೇಳೆ ಸಾರು.",
+                health: "Ragi Mudde releases glucose slowly. Spinach adds iron.",
+                prep: "10m", cook: "25m", serves: 2, isVeg: true,
+                ingredients: ["1 cup Ragi flour / ರಾಗಿ ಹಿಟ್ಟು", "0.5 cup Toor Dal / ತೊಗರಿಬೇಳೆ", "Palak / ಪಾಲಕ್ ಸೊಪ್ಪು", "Garlic, cumin / ಬೆಳ್ಳುಳ್ಳಿ, ಜೀರಿಗೆ"],
+                instructions: [
+                    { en: "Boil water, add ragi flour, stir continuously to make mudde.", kn: "1 ಕಪ್ ನೀರು ಕುದಿಸಿ, ರಾಗಿ ಹಿಟ್ಟು ಸೇರಿಸಿ ಗಂಟಿಲ್ಲದಂತೆ ತಿರುಗಿಸಿ. ಮುದ್ದೆ ಕಟ್ಟಿ." },
+                    { en: "Pressure cook dal and palak. Mash well.", kn: "ತೊಗರಿಬೇಳೆ ಮತ್ತು ಪಾಲಕ್ ಅನ್ನು ಕುಕ್ಕರ್‌ನಲ್ಲಿ ಬೇಯಿಸಿ, ಚೆನ್ನಾಗಿ ಮ್ಯಾಶ್ ಮಾಡಿ." },
+                    { en: "Temper dal with garlic, cumin, and chilies.", kn: "ಬೆಳ್ಳುಳ್ಳಿ, ಜೀರಿಗೆ ಮತ್ತು ಮೆಣಸಿನಕಾಯಿ ಒಗ್ಗರಣೆ ಕೊಡಿ." },
+                    { en: "Serve hot mudde with dal.", kn: "ಮುದ್ದೆಯನ್ನು ಬಿಸಿ ಸಾರಿನೊಂದಿಗೆ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 330, pro: 14, carb: 52, fib: 10, fat: 5 }, gi: "Low GI", cost: 45,
+                tags: ["Traditional", "Veg"], yt: "Ragi+Mudde+Palak+Dal"
+            },
+            {
+                name: "Quinoa Pulao & Raita", nameKn: "ಕ್ವಿನೋವಾ ಪುಲಾವ್ ಮತ್ತು ರಾಯ್ತ",
+                desc: "Light and fluffy quinoa cooked with whole spices and vegetables.",
+                descKn: "ಮಸಾಲೆ ಮತ್ತು ತರಕಾರಿಗಳೊಂದಿಗೆ ಬೇಯಿಸಿದ ಹಗುರವಾದ ಕ್ವಿನೋವಾ.",
+                health: "Quinoa is a complete protein and very low GI.",
+                prep: "10m", cook: "20m", serves: 2, isVeg: true,
+                ingredients: ["0.5 cup Quinoa / ಕ್ವಿನೋವಾ", "1 cup Veggies / ತರಕಾರಿಗಳು", "Whole spices / ಮಸಾಲೆಗಳು", "1 cup Curd / ಮೊಸರು"],
+                instructions: [
+                    { en: "Sauté spices and veggies. Add washed quinoa.", kn: "ಎಣ್ಣೆಯಲ್ಲಿ ಮಸಾಲೆ ಮತ್ತು ತರಕಾರಿ ಹುರಿಯಿರಿ. ತೊಳೆದ ಕ್ವಿನೋವಾ ಸೇರಿಸಿ." },
+                    { en: "Add water, cover and cook for 15 mins.", kn: "1 ಕಪ್ ನೀರು ಸೇರಿಸಿ, ಮುಚ್ಚಿ 15 ನಿಮಿಷ ಬೇಯಿಸಿ." },
+                    { en: "Mix grated cucumber and mint into curd for raita.", kn: "ಮೊಸರಿಗೆ ತುರಿದ ಸೌತೆಕಾಯಿ ಮತ್ತು ಪುದೀನಾ ಸೇರಿಸಿ ರಾಯ್ತ ಮಾಡಿ." },
+                    { en: "Serve hot pulao with cold raita.", kn: "ಬಿಸಿ ಪುಲಾವ್ ಮತ್ತು ತಂಪಾದ ರಾಯ್ತ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 310, pro: 12, carb: 40, fib: 9, fat: 9 }, gi: "Low GI", cost: 70,
+                tags: ["Modern", "Veg"], yt: "Healthy+Quinoa+Pulao"
+            }
+        ];
+
+        const dinnerPool = [
+            {
+                name: "Grilled Paneer & Veg Salad", nameKn: "ಪನೀರ್ ಮತ್ತು ತರಕಾರಿ ಸಲಾಡ್",
+                desc: "Warm salad with marinated paneer cubes and crunchy greens.",
+                descKn: "ಪನೀರ್ ಮತ್ತು ತಾಜಾ ತರಕಾರಿಗಳ ಆರೋಗ್ಯಕರ ಸಲಾಡ್.",
+                health: "Low carb, high protein for optimal overnight blood sugars.",
+                prep: "15m", cook: "10m", serves: 1, isVeg: true,
+                ingredients: ["100g Paneer / ಪನೀರ್", "Lettuce, cucumber, tomato / ಸೌತೆಕಾಯಿ, ಟೊಮೆಟೊ", "Lemon, chaat masala / ನಿಂಬೆ, ಚಾಟ್ ಮಸಾಲಾ"],
+                instructions: [
+                    { en: "Marinate paneer lightly with salt, pepper, and chaat masala.", kn: "ಪನೀರ್‌ಗೆ ಉಪ್ಪು, ಮೆಣಸು, ಚಾಟ್ ಮಸಾಲಾ ಸವರಿ." },
+                    { en: "Pan-grill paneer cubes in 1 tsp oil until golden.", kn: "1 ಚಮಚ ಎಣ್ಣೆಯಲ್ಲಿ ಪನೀರ್ ತುಂಡುಗಳನ್ನು ಸ್ವಲ್ಪ ಹುರಿಯಿರಿ." },
+                    { en: "Toss chopped raw veggies in a bowl.", kn: "ಕತ್ತರಿಸಿದ ಹಸಿ ತರಕಾರಿಗಳನ್ನು ಒಂದು ಬೌಲ್‌ನಲ್ಲಿ ಹಾಕಿ." },
+                    { en: "Mix paneer with veggies, drizzle lemon juice.", kn: "ಪನೀರ್ ಅನ್ನು ತರಕಾರಿಗಳೊಂದಿಗೆ ಬೆರೆಸಿ, ನಿಂಬೆ ರಸ ಹಿಂಡಿ." }
+                ],
+                macros: { cal: 280, pro: 18, carb: 12, fib: 6, fat: 18 }, gi: "Very Low GI", cost: 65,
+                tags: ["Low Carb", "Veg"], yt: "Healthy+Paneer+Salad"
+            },
+            {
+                name: "Clear Chicken/Mushroom Soup & Beans", nameKn: "ಚಿಕನ್/ಮಶ್ರೂಮ್ ಸೂಪ್ ಮತ್ತು ಬೀನ್ಸ್",
+                desc: "Light comforting soup with garlic sautéed green beans.",
+                descKn: "ಬೆಳ್ಳುಳ್ಳಿ ಪರಿಮಳದ ಬೀನ್ಸ್ ಮತ್ತು ಹಗುರವಾದ ಸೂಪ್.",
+                health: "Hydrating, very low calorie, high protein.",
+                prep: "10m", cook: "20m", serves: 2, isVeg: false,
+                ingredients: ["150g Chicken/Mushroom / ಚಿಕನ್ ಅಥವಾ ಮಶ್ರೂಮ್", "Garlic, ginger / ಬೆಳ್ಳುಳ್ಳಿ, ಶುಂಠಿ", "1 cup Green Beans / ಬೀನ್ಸ್"],
+                instructions: [
+                    { en: "Boil chicken/mushrooms with garlic, ginger to make broth.", kn: "ಬೆಳ್ಳುಳ್ಳಿ, ಶುಂಠಿಯೊಂದಿಗೆ ಚಿಕನ್/ಮಶ್ರೂಮ್ 15 ನಿಮಿಷ ಬೇಯಿಸಿ ಸೂಪ್ ಮಾಡಿ." },
+                    { en: "Season soup with pepper and spring onions.", kn: "ಸೂಪ್‌ಗೆ ಮೆಣಸು ಮತ್ತು ಸ್ಪ್ರಿಂಗ್ ಆನಿಯನ್ ಸೇರಿಸಿ." },
+                    { en: "Sauté green beans with garlic until tender-crisp.", kn: "ಪ್ಯಾನ್‌ನಲ್ಲಿ ಬೀನ್ಸ್ ಅನ್ನು ಬೆಳ್ಳುಳ್ಳಿಯೊಂದಿಗೆ ಸ್ವಲ್ಪ ಹುರಿಯಿರಿ." },
+                    { en: "Serve soup warm with beans on the side.", kn: "ಬಿಸಿ ಸೂಪ್ ಮತ್ತು ಬೀನ್ಸ್ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 210, pro: 24, carb: 10, fib: 5, fat: 6 }, gi: "Low GI", cost: 80,
+                tags: ["Light Dinner", "Non-Veg/Mushroom"], yt: "Clear+Chicken+Soup+Healthy"
+            },
+            {
+                name: "Ragi Dosa with Tomato Chutney", nameKn: "ರಾಗಿ ದೋಸೆ ಮತ್ತು ಟೊಮೆಟೊ ಚಟ್ನಿ",
+                desc: "Crispy dosas made from ragi and wheat flour, served with spicy red chutney.",
+                descKn: "ಗರಿಗರಿಯಾದ ರಾಗಿ ದೋಸೆ ಮತ್ತು ಖಾರವಾದ ಟೊಮೆಟೊ ಚಟ್ನಿ.",
+                health: "Light on the stomach, slow-releasing carbs.",
+                prep: "10m", cook: "15m", serves: 2, isVeg: true,
+                ingredients: ["0.5 cup Ragi flour / ರಾಗಿ ಹಿಟ್ಟು", "0.25 cup Wheat flour / ಗೋಧಿ ಹಿಟ್ಟು", "Curd / ಮೊಸರು", "Tomatoes, garlic / ಟೊಮೆಟೊ, ಬೆಳ್ಳುಳ್ಳಿ (ಚಟ್ನಿಗೆ)"],
+                instructions: [
+                    { en: "Mix flours, curd, onion, cumin, salt, and water.", kn: "ಹಿಟ್ಟು, ಮೊಸರು, ಈರುಳ್ಳಿ, ಜೀರಿಗೆ, ಉಪ್ಪು, ನೀರು ಸೇರಿಸಿ ತೆಳುವಾದ ಹಿಟ್ಟು ಮಾಡಿ." },
+                    { en: "Pour on a hot tawa. Cook until crisp.", kn: "ಬಿಸಿ ಕಾವಲಿಯ ಮೇಲೆ ರವಾ ದೋಸೆಯಂತೆ ಹಾಕಿ, ಗರಿಗರಿಯಾಗುವವರೆಗೆ ಬೇಯಿಸಿ." },
+                    { en: "Blend tomatoes, garlic, red chilies. Sauté in oil.", kn: "ಟೊಮೆಟೊ, ಬೆಳ್ಳುಳ್ಳಿ, ಕೆಂಪು ಮೆಣಸಿನಕಾಯಿ ರುಬ್ಬಿ, ಸ್ವಲ್ಪ ಹುರಿಯಿರಿ." },
+                    { en: "Serve 2 dosas with chutney.", kn: "2 ದೋಸೆಗಳನ್ನು ಚಟ್ನಿಯೊಂದಿಗೆ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 250, pro: 8, carb: 40, fib: 7, fat: 6 }, gi: "Low-Medium GI", cost: 35,
+                tags: ["Quick", "Veg"], yt: "Instant+Ragi+Dosa+Recipe"
+            },
+            {
+                name: "Dal Soup & 1 Jowar Roti", nameKn: "ದಾಲ್ ಸೂಪ್ ಮತ್ತು 1 ಜೋಳದ ರೊಟ್ಟಿ",
+                desc: "Comforting bowl of thin spiced dal with a sorghum flatbread.",
+                descKn: "ಮಸಾಲೆಯುಕ್ತ ಬೇಳೆ ಸೂಪ್ ಮತ್ತು ಗ್ಲುಟೆನ್-ಮುಕ್ತ ಜೋಳದ ರೊಟ್ಟಿ.",
+                health: "Jowar is rich in fiber. Dal provides satiety and protein.",
+                prep: "15m", cook: "20m", serves: 1, isVeg: true,
+                ingredients: ["0.5 cup Moong Dal / ಹೆಸರು ಬೇಳೆ", "1/2 cup Jowar flour / ಜೋಳದ ಹಿಟ್ಟು", "Garlic, turmeric / ಬೆಳ್ಳುಳ್ಳಿ, ಅರಿಶಿನ"],
+                instructions: [
+                    { en: "Boil dal with turmeric (soup-like). Temper with garlic & cumin.", kn: "ಅರಿಶಿನ ಸೇರಿಸಿ ಬೇಳೆಯನ್ನು ಸೂಪ್‌ನಂತೆ ಬೇಯಿಸಿ. ಬೆಳ್ಳುಳ್ಳಿ, ಜೀರಿಗೆ ಒಗ್ಗರಣೆ ಕೊಡಿ." },
+                    { en: "Knead jowar flour with warm water. Roll gently.", kn: "ಬಿಸಿ ನೀರಿನಲ್ಲಿ ಜೋಳದ ಹಿಟ್ಟು ಕಲಸಿ. ಮೃದುವಾಗಿ ರೊಟ್ಟಿ ತಟ್ಟಿ." },
+                    { en: "Cook roti on tawa until brown spots appear.", kn: "ಕಾವಲಿಯ ಮೇಲೆ ಕಂದು ಬಣ್ಣ ಬರುವವರೆಗೆ ಬೇಯಿಸಿ." },
+                    { en: "Serve hot roti with dal soup.", kn: "ಬಿಸಿ ರೊಟ್ಟಿಯನ್ನು ದಾಲ್ ಸೂಪ್‌ನೊಂದಿಗೆ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 310, pro: 14, carb: 48, fib: 9, fat: 6 }, gi: "Medium-Low GI", cost: 40,
+                tags: ["Comfort Food", "Veg"], yt: "Jowar+Roti+Dal+Healthy"
+            },
+            {
+                name: "Lemon Oats & Boiled Egg", nameKn: "ನಿಂಬೆ ಓಟ್ಸ್ ಮತ್ತು ಬೇಯಿಸಿದ ಮೊಟ್ಟೆ",
+                desc: "A tangy, spicy savory oats preparation served with a boiled egg.",
+                descKn: "ಹುಳಿ ಮತ್ತು ಖಾರವಾದ ಓಟ್ಸ್ ಮತ್ತು ಬೇಯಿಸಿದ ಮೊಟ್ಟೆ.",
+                health: "Vitamin C improves iron absorption. Perfect macro balance.",
+                prep: "5m", cook: "10m", serves: 1, isVeg: false,
+                ingredients: ["0.5 cup Rolled Oats / ಓಟ್ಸ್", "1 Boiled Egg / ಬೇಯಿಸಿದ ಮೊಟ್ಟೆ", "Lemon juice / ನಿಂಬೆ ರಸ", "Chilies, mustard / ಮೆಣಸಿನಕಾಯಿ, ಸಾಸಿವೆ"],
+                instructions: [
+                    { en: "Dry roast oats lightly.", kn: "ಓಟ್ಸ್ ಅನ್ನು 2-3 ನಿಮಿಷ ಹುರಿಯಿರಿ." },
+                    { en: "Temper mustard and chilies. Add water, salt, and boil.", kn: "ಸಾಸಿವೆ, ಮೆಣಸಿನಕಾಯಿ ಒಗ್ಗರಣೆ ಹಾಕಿ. ನೀರು, ಉಪ್ಪು ಸೇರಿಸಿ ಕುದಿಸಿ." },
+                    { en: "Add oats, cook until thick. Turn off heat.", kn: "ಓಟ್ಸ್ ಸೇರಿಸಿ ದಪ್ಪಗಾಗುವವರೆಗೆ 5 ನಿಮಿಷ ಬೇಯಿಸಿ. ಉರಿ ಆರಿಸಿ." },
+                    { en: "Squeeze lemon. Serve with boiled egg.", kn: "ನಿಂಬೆ ರಸ ಸೇರಿಸಿ. ಬೇಯಿಸಿದ ಮೊಟ್ಟೆಯೊಂದಿಗೆ ಬಡಿಸಿ." }
+                ],
+                macros: { cal: 260, pro: 13, carb: 30, fib: 5, fat: 8 }, gi: "Low GI", cost: 35,
+                tags: ["Quick Prep", "Non-Veg"], yt: "Savory+Oats+Recipe"
+            }
+        ];
+
+        // Filter Pure Veg options
+        const vegBreakfasts = breakfastPool.filter(b => b.isVeg);
+        const vegLunches = lunchPool.filter(l => l.isVeg);
+        const vegDinners = dinnerPool.filter(d => d.isVeg);
+
+        // Generate 30 days array
+        const daysData = [];
+        for(let day=1; day<=30; day++) {
+            // Check if it's Monday (Day 1, 8, 15, 22, 29)
+            let isMonday = (day % 7 === 1); 
+            
+            let b, l, d;
+            if (isMonday) {
+                b = vegBreakfasts[(day) % vegBreakfasts.length];
+                l = vegLunches[(day) % vegLunches.length];
+                d = vegDinners[(day) % vegDinners.length];
+            } else {
+                b = breakfastPool[(day) % breakfastPool.length];
+                l = lunchPool[(day) % lunchPool.length];
+                d = dinnerPool[(day) % dinnerPool.length];
+            }
+
+            daysData.push({
+                dayNum: day,
+                isMonday: isMonday,
+                breakfast: b,
+                lunch: l,
+                dinner: d
+            });
+        }
+
+        // --- UI LOGIC ---
+        
+        let currentDate = new Date().getDate();
+        if(currentDate > 30) currentDate = 30; // Map 31st to Day 30
+
+        function init() {
+            setupTabs();
+            renderCalendar();
+            renderDayView(currentDate);
+            document.getElementById('current-day-banner').innerText = `Displaying plan for Day ${currentDate} of 30`;
+            
+            // Scroll to top button logic
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.remove('scale-0', 'opacity-0');
+                    backToTopBtn.classList.add('scale-100', 'opacity-100');
+                } else {
+                    backToTopBtn.classList.add('scale-0', 'opacity-0');
+                    backToTopBtn.classList.remove('scale-100', 'opacity-100');
+                }
+            });
+        }
+
+        function setupTabs() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Reset all tabs
+                    tabs.forEach(t => {
+                        t.classList.remove('bg-emerald-600', 'text-white');
+                        t.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                    });
+                    
+                    // Hide all sections
+                    document.querySelectorAll('.section-content').forEach(sec => {
+                        sec.classList.remove('block');
+                        sec.classList.add('hidden');
+                    });
+                    
+                    // Activate clicked tab
+                    tab.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                    tab.classList.add('bg-emerald-600', 'text-white');
+                    
+                    // Show target section
+                    const targetId = tab.getAttribute('data-target');
+                    const targetSection = document.getElementById(targetId);
+                    targetSection.classList.remove('hidden');
+                    targetSection.classList.add('block');
+                });
+            });
+        }
+
+        function getDayName(dayNum) {
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            return days[(dayNum) % 7];
+        }
+        function getDayNameKn(dayNum) {
+            const daysKn = ["ಭಾನುವಾರ", "ಸೋಮವಾರ", "ಮಂಗಳವಾರ", "ಬುಧವಾರ", "ಗುರುವಾರ", "ಶುಕ್ರವಾರ", "ಶನಿವಾರ"];
+            return daysKn[(dayNum) % 7];
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendar-grid');
+            grid.innerHTML = '';
+            for(let i=1; i<=30; i++) {
+                const box = document.createElement('button');
+                
+                const baseClasses = "flex flex-col items-center justify-center p-2 rounded-xl border transition-all duration-200 font-bold focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-1 dark:focus:ring-offset-slate-900";
+                const inactiveClasses = "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-emerald-300";
+                const activeClasses = "bg-emerald-600 border-emerald-600 text-white shadow-md transform scale-105";
+                const todayClasses = i === currentDate && i !== currentDate ? "ring-2 ring-orange-500 ring-offset-2" : ""; // Modified logic to let active state take precedence purely on click, but keep orange ring for the actual current day.
+                
+                box.className = `${baseClasses} ${i === currentDate ? activeClasses : inactiveClasses} day-box`;
+                if(i === new Date().getDate() && i <= 30) {
+                    box.classList.add('ring-2', 'ring-orange-500', 'dark:ring-orange-400');
+                }
+
+                box.innerHTML = `
+                    <span class="text-sm md:text-base">Day ${i}</span>
+                    <span class="text-[10px] md:text-xs mt-1 ${i === currentDate ? 'text-emerald-100' : 'text-slate-500 dark:text-slate-400'} font-medium uppercase tracking-wider day-lbl">${getDayName(i).substring(0,3)}</span>
+                `;
+                
+                box.onclick = () => {
+                    // Reset styling
+                    document.querySelectorAll('.day-box').forEach(b => {
+                        b.className = `${baseClasses} ${inactiveClasses} day-box`;
+                        if(parseInt(b.querySelector('span').innerText.replace('Day ', '')) === new Date().getDate()) {
+                             b.classList.add('ring-2', 'ring-orange-500', 'dark:ring-orange-400');
+                        }
+                    });
+                    
+                    // Apply active styling
+                    box.className = `${baseClasses} ${activeClasses} day-box`;
+                    box.querySelector('.day-lbl').classList.remove('text-slate-500', 'dark:text-slate-400');
+                    box.querySelector('.day-lbl').classList.add('text-emerald-100');
+                    
+                    renderDayView(i);
+                };
+                grid.appendChild(box);
+            }
+        }
+
+        function renderDayView(dayNum) {
+            const container = document.getElementById('day-view-container');
+            const data = daysData[dayNum - 1];
+            
+            let mondayBadge = data.isMonday ? `
+                <div class="mb-6 bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 px-4 py-3 rounded-xl flex items-center gap-3 shadow-sm">
+                    <span class="text-2xl">🌱</span>
+                    <div>
+                        <strong class="block text-emerald-900 dark:text-emerald-100">Monday Special: Pure Veg Menu</strong>
+                        <span class="text-sm">ಸೋಮವಾರದ ವಿಶೇಷ: ಸಂಪೂರ್ಣ ಸಸ್ಯಾಹಾರಿ</span>
+                    </div>
+                </div>` : '';
+
+            container.innerHTML = `
+                <div class="mb-4 pb-2 border-b-2 border-emerald-100 dark:border-emerald-900">
+                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Day ${dayNum}: ${getDayName(dayNum)} Menu</h2>
+                    <h3 class="text-lg text-kannada-light dark:text-kannada-dark mt-1 font-medium">${getDayNameKn(dayNum)} ಊಟದ ಯೋಜನೆ</h3>
+                </div>
+                ${mondayBadge}
+                ${createRecipeAccordion('🌅 Breakfast (ಬೆಳಗಿನ ತಿಂಡಿ)', data.breakfast, true)}
+                ${createRecipeAccordion('☀️ Lunch (ಮಧ್ಯಾಹ್ನದ ಊಟ)', data.lunch, false)}
+                ${createRecipeAccordion('🌙 Dinner (ರಾತ್ರಿಯ ಊಟ)', data.dinner, false)}
+            `;
+        }
+
+        function createRecipeAccordion(mealType, recipe, isOpen) {
+            const uid = Math.random().toString(36).substr(2, 9);
+            
+            const badgeClasses = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border";
+            const tagHTML = recipe.tags.map(t => {
+                if(t === "Veg" || t === "Vegan") return `<span class="${badgeClasses} bg-green-50 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800">${t}</span>`;
+                if(t === "High Protein") return `<span class="${badgeClasses} bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-900/30 dark:text-sky-300 dark:border-sky-800">${t}</span>`;
+                if(t === "High Fiber") return `<span class="${badgeClasses} bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800">${t}</span>`;
+                return `<span class="${badgeClasses} bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700">${t}</span>`;
+            }).join(' ');
+
+            const youtubeLink = `https://www.youtube.com/results?search_query=${recipe.yt}`;
+
+            return `
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden mb-4 transition-all">
+                    <!-- Header -->
+                    <button class="w-full text-left px-5 py-4 focus:outline-none hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors flex justify-between items-center group" onclick="toggleAccordion('${uid}')">
+                        <div>
+                            <div class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-1">${mealType}</div>
+                            <div class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">${recipe.name}</div>
+                            <div class="text-kannada-light dark:text-kannada-dark text-sm mt-0.5 font-medium">${recipe.nameKn}</div>
+                        </div>
+                        <div class="accordion-icon shrink-0 ml-4 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </button>
+                    
+                    <!-- Body -->
+                    <div id="${uid}" class="accordion-body ${isOpen ? 'active' : ''} bg-slate-50 dark:bg-slate-900/50">
+                        <div class="px-5 pb-5 pt-2 border-t border-slate-100 dark:border-slate-700/50">
+                            
+                            <p class="text-slate-700 dark:text-slate-300 italic mb-1">${recipe.desc}</p>
+                            <p class="text-kannada-light dark:text-kannada-dark text-sm mb-4 font-medium">${recipe.descKn}</p>
+                            
+                            <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 p-3 mb-4 text-sm text-blue-800 dark:text-blue-200 rounded-r-md">
+                                <strong>Health Note:</strong> ${recipe.health}
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                ${tagHTML}
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- Left Col: Details & Ingredients -->
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2"><span class="text-lg">📝</span> Details</h3>
+                                    <ul class="space-y-1 text-sm text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-6 shadow-sm">
+                                        <li class="flex justify-between border-b border-slate-100 dark:border-slate-700 pb-1"><span>Prep Time:</span> <strong class="text-slate-800 dark:text-slate-200">${recipe.prep}</strong></li>
+                                        <li class="flex justify-between border-b border-slate-100 dark:border-slate-700 pb-1 pt-1"><span>Cook Time:</span> <strong class="text-slate-800 dark:text-slate-200">${recipe.cook}</strong></li>
+                                        <li class="flex justify-between border-b border-slate-100 dark:border-slate-700 pb-1 pt-1"><span>Serves:</span> <strong class="text-slate-800 dark:text-slate-200">${recipe.serves}</strong></li>
+                                        <li class="flex justify-between pt-1"><span>GI Impact:</span> <strong class="text-emerald-600 dark:text-emerald-400">${recipe.gi}</strong></li>
+                                    </ul>
+
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2"><span class="text-lg">🛒</span> Ingredients (ಸಾಮಗ್ರಿಗಳು)</h3>
+                                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 ml-1 mb-6">
+                                        ${recipe.ingredients.map(i => {
+                                            const parts = i.split(' / ');
+                                            if(parts.length > 1) {
+                                                return `<li>${parts[0]} <span class="text-kannada-light dark:text-kannada-dark text-sm block sm:inline sm:ml-1">/ ${parts[1]}</span></li>`;
+                                            }
+                                            return `<li>${i}</li>`;
+                                        }).join('')}
+                                    </ul>
+                                    
+                                    <a href="${youtubeLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                        </svg>
+                                        YouTube Recipe Search
+                                    </a>
+                                </div>
+
+                                <!-- Right Col: Instructions & Macros -->
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2"><span class="text-lg">🍳</span> Instructions (ಮಾಡುವ ವಿಧಾನ)</h3>
+                                    <ol class="space-y-4 mb-6">
+                                        ${recipe.instructions.map((i, index) => `
+                                            <li class="flex gap-3">
+                                                <div class="shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">${index + 1}</div>
+                                                <div>
+                                                    <div class="text-slate-700 dark:text-slate-300">${i.en}</div>
+                                                    <div class="text-kannada-light dark:text-kannada-dark text-sm mt-1 font-medium">${i.kn}</div>
+                                                </div>
+                                            </li>
+                                        `).join('')}
+                                    </ol>
+
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2"><span class="text-lg">📊</span> Macros (per serving)</h3>
+                                    <div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+                                        <table class="w-full text-left text-sm">
+                                            <tbody class="divide-y divide-slate-100 dark:divide-slate-700/50">
+                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50 w-1/3">Calories</th>
+                                                    <td class="px-4 py-2 font-bold text-slate-800 dark:text-slate-200">${recipe.macros.cal} kcal</td>
+                                                </tr>
+                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Protein</th>
+                                                    <td class="px-4 py-2 text-slate-700 dark:text-slate-300">${recipe.macros.pro} g <span class="ml-2 text-[10px] uppercase font-bold tracking-wider text-sky-600 bg-sky-100 dark:bg-sky-900/30 dark:text-sky-400 px-1.5 py-0.5 rounded">High</span></td>
+                                                </tr>
+                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Carbs</th>
+                                                    <td class="px-4 py-2 text-slate-700 dark:text-slate-300">${recipe.macros.carb} g</td>
+                                                </tr>
+                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Fiber</th>
+                                                    <td class="px-4 py-2 text-slate-700 dark:text-slate-300">${recipe.macros.fib} g <span class="ml-2 text-[10px] uppercase font-bold tracking-wider text-amber-700 bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400 px-1.5 py-0.5 rounded">High</span></td>
+                                                </tr>
+                                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                                    <th class="px-4 py-2 font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">Fat</th>
+                                                    <td class="px-4 py-2 text-slate-700 dark:text-slate-300">${recipe.macros.fat} g</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.toggleAccordion = function(id) {
+            const body = document.getElementById(id);
+            const button = body.previousElementSibling;
+            const icon = button.querySelector('.accordion-icon');
+            
+            if(body.classList.contains('active')) {
+                body.classList.remove('active');
+                icon.classList.remove('rotate-180');
+            } else {
+                body.classList.add('active');
+                icon.classList.add('rotate-180');
+            }
+        };
+
+        // Initialize App
+        window.onload = init;
+    </script>
+</body>
+</html>
